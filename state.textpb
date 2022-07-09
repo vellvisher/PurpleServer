@@ -1,0 +1,5 @@
+newsletters {
+  provider: BREW
+  newsletter_url: "https://raw.githubusercontent.com/vellvisher/PurpleServer/main/brew_220709_raw_message.html"
+  upload_time: 1657379797
+}

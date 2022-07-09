@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+message State {
+  repeated Newsletter newsletters = 1;
+}
+
+enum Provider {
+  BREW = 1;
+}
+
+// Represents an Newsletter that can be rendered by the app.
+// Next available tag = 5
+message Newsletter {
+  optional Provider provider = 1;
+  // Fully-qualified url of newsletter.
+  optional string newsletter_url = 2;
+  optional int64 upload_time = 3;
+  repeated Article widget_articles = 4;
+
+  message Article {
+    optional string title = 1;
+    optional string body = 2;
+    optional string imageURL = 3;
+    // TODO(vaarnan): Need an identifier to deep-link.
+  }
+}
