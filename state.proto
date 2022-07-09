@@ -1,5 +1,7 @@
 syntax = "proto2";
 
+package PurpleDaily;
+
 message State {
   repeated Newsletter newsletters = 1;
 }
