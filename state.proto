@@ -22,7 +22,7 @@ message Newsletter {
   message Article {
     optional string title = 1;
     optional string body = 2;
-    optional string imageURL = 3;
+    optional string image_url = 3;
     // TODO(vaarnan): Need an identifier to deep-link.
   }
 }

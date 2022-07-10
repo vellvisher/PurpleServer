@@ -1,10 +1,10 @@
 newsletters {
   provider: BREW
   newsletter_url: "https://raw.githubusercontent.com/vellvisher/PurpleServer/main/brew_220709_raw_message.html"
-  upload_time: 1657391044
+  upload_time: 1657455562
   widget_articles {
     title: "Elon Musk officially tries to abandon Twitter deal"
     body: "We\342\200\231re going to Delaware."
-    imageURL: "https://images.morningbrew.com/gif/2022-04-14/image-1c127e5a8f34be3132cbcb488b1128520128a9e6-480x269-gif/giphy(1).webp"
+    image_url: "https://images.morningbrew.com/gif/2022-04-14/image-1c127e5a8f34be3132cbcb488b1128520128a9e6-480x269-gif/giphy(1).webp"
   }
 }
