@@ -1,26 +1,36 @@
 #!/usr/bin/python3
 
-import argparse
-from state_pb2 import State
-from state_pb2 import Newsletter
-from state_pb2 import Provider
+from bs4 import BeautifulSoup
 from datetime import datetime
 from google.protobuf import text_format
-from bs4 import BeautifulSoup
+from state_pb2 import Newsletter
+from state_pb2 import Provider
+from state_pb2 import State
+from typing import List
+import argparse
+import glob
+import os
 
-def parse_parameters():
+"""
+  Returns directory of files.
+"""
+def parse_parameters() -> str:
     parser = argparse.ArgumentParser("newsletter_tool")
-    parser.add_argument("html", help="HTML file with newsletter content", type=str)
+    parser.add_argument("html_dir", help="Directory with html files", type=str)
     args = parser.parse_args()
-    assert(args.html.endswith(".html"))
-    return args.html
+    assert(not os.path.isfile(args.html_dir))
+    return args.html_dir
+
+def glob_files(html_dir: str) -> List[str]:
+    files = sorted(glob.glob(html_dir + '/*' + 'html'))
+    return files
 
 def process_brew_html(html_string: str):
     soup = BeautifulSoup(html_string, 'html.parser')
 
-def create_state(html_file: str):
+def create_state(html_files: List[str]):
     state = State()
-    state.newsletters.extend([create_newsletter(html_file = html_file)])
+    state.newsletters.extend([create_newsletter(html_file) for html_file in html_files])
     state.newsletters[0].widget_articles.extend(create_articles())
     return state
 
@@ -45,6 +55,7 @@ def write_state(state: State):
     out_file.close()
 
 if __name__ == '__main__':
-    html_file = parse_parameters()
-    state = create_state(html_file)
+    html_dir = parse_parameters()
+    html_files = glob_files(html_dir)
+    state = create_state(html_files)
     write_state(state)

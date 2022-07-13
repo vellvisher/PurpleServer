@@ -3,6 +3,7 @@ syntax = "proto2";
 package PurpleDaily;
 
 message State {
+  /// In ascending order by provider and date.
   repeated Newsletter newsletters = 1;
 }
 

@@ -1,0 +1,2974 @@
+Delivered-To: vaarnan@gmail.com
+Received: by 2002:a05:6a11:ee06:b0:2b3:1a2c:659c with SMTP id dg6csp2968908pxc;
+        Tue, 12 Jul 2022 04:29:08 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1sNJtxr3JxSGlPow6jlGShjecn/lu7eZOTTUu0Xyh8l5lbAm3/MCjA9meu1uKfyYrnQ4jgq
+X-Received: by 2002:a05:6e02:1d8c:b0:2dc:3462:d61e with SMTP id h12-20020a056e021d8c00b002dc3462d61emr11960097ila.221.1657625347927;
+        Tue, 12 Jul 2022 04:29:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1657625347; cv=none;
+        d=google.com; s=arc-20160816;
+        b=t2+9EgOOOvy2w0SF1ez+JmfnWQWDwvN00G0J1hrjH2MvKqDG0E3QK1D4YrpxTYwvJZ
+         Ce1MlmX2CKytyVMDxQkBjbiwGkVLoPKaxeP9X8EJKkqmqPmKzm49gX8oyVXqmRbWLoh+
+         j5Ndsoh5R1mxv0PeNUGWYYrXjo34rr/92rSEnmiuPL4U7dsudWNeFf1kWQARPJsrRYgR
+         lwUsrrZN02yeXuW+js+MS5dJwmyFLEaN7rODKjdXNz/gZJpH1Sg8I/JAGvTjNET17cJa
+         DDRSSsYCyDD+rck4WBxf4BUr2mATIqDYFXN4xI3xADXWukjOqelu1jimA4dsQWaiWDmF
+         lI9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:precedence:mime-version:subject:message-id:to
+         :reply-to:from:date:dkim-signature;
+        bh=229upIdrvGq7DUcAKtu8eKrRby5xURxJi2usiSvSCNs=;
+        b=Ovv9qa8IYm3acWXp/N9dFytHSSDPUYnIxpzJXXvzFxykWR8unkBC9XHwTgNkCGiFiI
+         htlfbpbj369IG3uRSmGJdZSkSYoIdUcg9zRV6++Bc+RGrTLoCTQPifzO85X8NvOYVMwW
+         HoxFKVgiYJBnZ9rxQ3T91tqj/Dx/3/KnTqCQnSB/ewHc5KNDRGoG0j4GKXfx8oyywyVK
+         aRpNikG9Vg96wuXDL9EVVrKjhDXEaAVPhnof/RW3sYJaoA1gC3tEOXQbQQQNwQwCCLJv
+         TtZejVUCJStJx6Hq4o6JhgCrvyZUl0EzdJU7eQEJ4sPjH4Gk8/XWjSD4bXvVkTEBVjjf
+         npew==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@morningbrew.com header.s=sailthru header.b=AHGJAnDc;
+       spf=pass (google.com: domain of delivery_20220712055235.28342730.1859339@bounce.morningbrew.com designates 192.64.237.121 as permitted sender) smtp.mailfrom=delivery_20220712055235.28342730.1859339@bounce.morningbrew.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=morningbrew.com
+Return-Path: <delivery_20220712055235.28342730.1859339@bounce.morningbrew.com>
+Received: from morningbrew-b.sailthru.com (morningbrew-b.sailthru.com. [192.64.237.121])
+        by mx.google.com with ESMTPS id e13-20020a026d4d000000b00339df705a37si8704129jaf.32.2022.07.12.04.29.07
+        for <vaarnan@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 12 Jul 2022 04:29:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of delivery_20220712055235.28342730.1859339@bounce.morningbrew.com designates 192.64.237.121 as permitted sender) client-ip=192.64.237.121;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@morningbrew.com header.s=sailthru header.b=AHGJAnDc;
+       spf=pass (google.com: domain of delivery_20220712055235.28342730.1859339@bounce.morningbrew.com designates 192.64.237.121 as permitted sender) smtp.mailfrom=delivery_20220712055235.28342730.1859339@bounce.morningbrew.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=morningbrew.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; s=sailthru; d=morningbrew.com;
+ h=Date:From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:
+ List-Unsubscribe; i=crew@morningbrew.com;
+ bh=cn5it7ypOilCXIGV7S815ol2IoFMnOEIPym3oIIffzc=;
+ b=AHGJAnDc7YAFrFr+WD+URtaCldjS3RcY+sQLPe9vchayjNmJQwOuC+9TqXWqRionB+vvh7arzEBA
+   nIHsik9Mycgh3pIfxn/Q62iESPZbQ6qSCMlSE+Fhjug2qApH4y0kt8F8ngKEIRdtidwmUxVl2L4T
+   ES4bYL5vI1P86Teqe1U=
+Received: from njmta-149.sailthru.com (173.228.155.149) by morningbrew-b.sailthru.com id hpldg62tem45 for <vaarnan@gmail.com>; Tue, 12 Jul 2022 05:57:53 -0400 (envelope-from <delivery_20220712055235.28342730.1859339@bounce.morningbrew.com>)
+Received: from nj1-farmelon.flt (172.18.20.31) by njmta-149.sailthru.com id hpl2q01qqbsj for <vaarnan@gmail.com>; Tue, 12 Jul 2022 05:52:35 -0400 (envelope-from <delivery_20220712055235.28342730.1859339@bounce.morningbrew.com>)
+Date: Tue, 12 Jul 2022 05:52:35 -0400 (EDT)
+From: Morning Brew <crew@morningbrew.com>
+Reply-To: crew@morningbrew.com
+To: vaarnan@gmail.com
+Message-ID: <20220712055235.28342730.1859339@sailthru.com>
+Subject: =?utf-8?B?4piVIE9uIHRoZSBicmluaw==?=
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_4078852_749597191.1657619555772"
+Precedence: bulk
+X-Feedback-ID: 7748:28342730:campaign:sailthru
+X-TM-ID: 20220712055235.28342730.1859339
+X-Info: Message sent by sailthru.com customer Morning Brew
+X-Info: We do not permit unsolicited commercial email
+X-Info: Please report abuse by forwarding complete headers to
+X-Info: abuse@sailthru.com
+X-Mailer: sailthru.com
+X-JMailer: nj1-farmelon.flt
+X-Unsubscribe-Web: https://link.morningbrew.com/oc/5cb51495fc942d6faa0ad4aegvhe2.13uob/7e273497
+List-Unsubscribe: <https://link.morningbrew.com/oc/5cb51495fc942d6faa0ad4aegvhe2.13uob/7e273497>, <mailto:unsubscribe_20220712055235.28342730.1859339@mx.sailthru.com>
+X-rpcampaign: stlma28342730
+X-TUID: yrSVL2UB1wKC
+
+------=_Part_4078852_749597191.1657619555772
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Texas power grid put to the test... <a href=3D"https://link.morningbrew.com=
+/click/28342730.1859339/aHR0cDovL3d3dy5tb3JuaW5nYnJldy5jb20i/5cb51495fc942d=
+6faa0ad4aeBc1725866/email><img src=3D"https://link.morningbrew.com/img/5cb5=
+1495fc942d6faa0ad4aegvhe2.13uob/05fc6083.gif" alt=3D"" border=3D"0" /></a>
+
+July 12, 2022 View Online <https://link.morningbrew.com/click/28342730.1859=
+339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L2lzc3Vlcy9vbi10aGUtYnJpbms=
+_dXRtX3NvdXJjZT1oZWFkZXJfc2lnbnVwJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fY2FtcG=
+FpZ249bWImbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6f=
+aa0ad4aeCccf5019c/email> | Sign Up <https://link.morningbrew.com/click/2834=
+2730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5P3V0bV9zb3VyY2U9aG=
+VhZGVyX3NpZ251cCZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX2NhbXBhaWduPW1iJmtpZD03Z=
+mU3NTYmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0=
+ad4aeCf1cd93c8/email> | Shop <https://link.morningbrew.com/click/28342730.1=
+859339/aHR0cHM6Ly9zaG9wLm1vcm5pbmdicmV3LmNvbS8_dXRtX3NvdXJjZT1jcm9zc3Byb21v=
+JnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fY2FtcGFpZ249bWJfaGVhZGVyJm1pZD01ZjdiNjA=
+5ZjBkMThhZDVjNGJiNjhkNzU1ZDI4NmEyYg/5cb51495fc942d6faa0ad4aeC9177db64/email=
+>
+Morning Brew <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6L=
+y93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvP3V0bV9zb3VyY2U9aGVhZGVyX3Np=
+Z251cCZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX2NhbXBhaWduPW1iJm1pZD01ZjdiNjA5ZjB=
+kMThhZDVjNGJiNjhkNzU1ZDI4NmEyYg/5cb51495fc942d6faa0ad4aeC702e0d60/email>
+
+TOGETHER WITH
+
+ Crowdstreet <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6L=
+y93d3cuY3Jvd2RzdHJlZXQuY29tL2pvaW4vbm93Lz91dG1fc291cmNlPXB1Ymxpc2hlci1tb3Ju=
+aW5nYnJldyZ1dG1fbWVkaXVtPW5ldyUyMHNsZXR0ZXImdXRtX2NvbnRlbnQ9bWFya2V0LXZvbGF=
+0aWxpdHkmdXRtX2NhbXBhaWduPW1hcmtldHBsYWNl/5cb51495fc942d6faa0ad4aeF3b5d0a62=
+/email>=20
+Good morning. Theme Park Week rolls on with a brief history of the best the=
+me park innovation in the last three decades: Dippin=E2=80=99 Dots. We don'=
+t remember if they tasted good, but we remember they made us feel like sorc=
+erers. Read about what the brand is up to below.
+
+=E2=80=94Neal Freyman, Matty Merritt, Max Knoblauch, Joe Abrams
+
+ =20
+
+MARKETS
+
+Nasdaq
+
+11,372.60
+
+-2.26%
+
+S&P
+
+3,854.43
+
+-1.15%
+
+Dow
+
+31,173.84
+
+-0.52%
+
+10-Year
+
+2.995%
+
+-10.5 bps
+
+Bitcoin
+
+$20,372.38
+
+-3.54%
+
+Twitter
+
+$32.65
+
+-11.30%
+
+*Stock data as of market close, cryptocurrency data as of 8:00pm ET. Here's=
+ what these numbers mean. <https://link.morningbrew.com/click/28342730.1859=
+339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvMjAyMC8xMC8xOS9=
+tYXJrZXRzLTEwMS1yZWFkLXN0b2NrLWluZGV4ZXMtc2VjdXJpdGllcz91dG1fc291cmNlPW9uYm=
+9hcmRpbmcmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6f=
+aa0ad4aeCf128a32c/email>
+
+Markets: Stocks got bogged down <https://link.morningbrew.com/click/2834273=
+0.1859339/aHR0cHM6Ly93d3cuY25iYy5jb20vMjAyMi8wNy8xMC9zdG9jay1tYXJrZXQtZnV0d=
+XJlcy1vcGVuLXRvLWNsb3NlLW5ld3MuaHRtbA/5cb51495fc942d6faa0ad4aeC0ce08c19/ema=
+il> in emails that piled up over the weekend and closed lower ahead of the =
+start of earnings season later this week. Twitter stock tumbled as it prepa=
+res to sue Elon Musk to compel him to buy the company, because whatever end=
+s up happening in that Delaware court room, most folks agree that it won=E2=
+=80=99t be good for Twitter.
+
+ENERGY
+
+Texas power grid vs. extreme heat: Who ya got? <https://link.morningbrew.co=
+m/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3=
+JpZXMvMjAyMi8wNy8xMS90ZXhhcy1ncmlkLW9wZXJhdG9yLWFza3MtcmVzaWRlbnRzLXRvLWNvb=
+nNlcnZlLXBvd2VyLWR1cmluZy1oZWF0LXdhdmU_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09=
+bmV3c2xldHRlciZ1dG1fc291cmNlPW1vcm5pbmdfYnJldyZtaWQ9NWY3YjYwOWYwZDE4YWQ1YzR=
+iYjY4ZDc1NWQyODZhMmI/5cb51495fc942d6faa0ad4aeD7b482a67/email> Texas flag in=
+ front of power lines <https://link.morningbrew.com/click/28342730.1859339/=
+aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvMjAyMi8wNy8xMS90ZXh=
+hcy1ncmlkLW9wZXJhdG9yLWFza3MtcmVzaWRlbnRzLXRvLWNvbnNlcnZlLXBvd2VyLWR1cmluZy=
+1oZWF0LXdhdmU_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291c=
+mNlPW1vcm5pbmdfYnJldyZtaWQ9NWY3YjYwOWYwZDE4YWQ1YzRiYjY4ZDc1NWQyODZhMmI/5cb5=
+1495fc942d6faa0ad4aeE7b482a67/email>Brandon Bell/Getty Images
+The Texas power grid channeled an NFL defense=E2=80=99s =E2=80=9Cbend but d=
+on=E2=80=99t break=E2=80=9D strategy yesterday as record temperatures teste=
+d <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cud2Fz=
+aGluZ3RvbnBvc3QuY29tL2NsaW1hdGUtZW52aXJvbm1lbnQvMjAyMi8wNy8xMS90ZXhhcy1yZWN=
+vcmQtaGVhdC1lcmNvdC1wb3dlci1ncmlkLz91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZX=
+dzbGV0dGVyJnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0ad4aeCd2049d4=
+c/email> the state=E2=80=99s banged-up electrical infrastructure.
+
+Sunday was Texas=E2=80=99s second-hottest day since at least 1950 and the s=
+tate=E2=80=99s primary grid operator, the Electric Reliability Council of T=
+exas (ERCOT), urged residents to conserve energy between 2pm and 8pm Monday=
+ to keep demand from outstripping available power supply and avoid blackout=
+s.
+
+By conserving energy, it meant holding off on running large household appli=
+ances, such as dishwashers and washing machines, and cranking up the thermo=
+stat to 78 degrees minimum=E2=80=94steamy, but basically an ice bath compar=
+ed to the record 110-degree temp Austin faced on Sunday.
+
+ERCOT is taking these dramatic steps because it=E2=80=99s got very little w=
+iggle room. Between 2pm and 3pm yesterday, the grid could generate an estim=
+ated 80,168 megawatts (MW), while demand was expected to hit 79,671 MW. Tha=
+t=E2=80=99d be a record for July, topping the previous high-water mark for =
+demand set on Friday with 78,204 MW.
+
+With temperatures expected to remain sizzling into today, officials are pre=
+paring for the worst-case scenario. For example, Houston Mayor Sylvester Tu=
+rner instructed the city=E2=80=99s emergency departments to step in should =
+the power grid fail.
+
+How did it come to this?
+
+As mentioned, Texas is dealing with unprecedented demand thanks to the reco=
+rd heat. And the power supply isn=E2=80=99t at full-strength, either. With =
+hardly a breeze blowing through the Texas plains, wind generation was less =
+than 10% of its capacity on Monday, ERCOT said.
+
+But the power issues only add to longstanding concerns Texans have with the=
+ir electricity supply, which has found itself on the brink before.
+
+In May, residents were asked to conserve power during a heat wave in which =
+six power plants were knocked offline.
+
+And they won=E2=80=99t soon forget the crisis of February 2021, when a wint=
+er storm knocked out power for millions of people and led to hundreds of de=
+aths. The grid was mere minutes away from total collapse.
+
+Big picture: Texas=E2=80=99s electrical woes have become a focal point of t=
+he state=E2=80=99s gubernatorial election this fall. Democratic challenger =
+Beto O=E2=80=99Rourke has repeatedly accused Gov. Greg Abbott of failing to=
+ shore up Texas=E2=80=99s power infrastructure so that it functions smoothl=
+y.=E2=80=94NF
+
+<https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuZmFjZW=
+Jvb2suY29tL3NoYXJlci5waHA_dT1odHRwczovL3d3dy5tb3JuaW5nYnJldy5jb20vZGFpbHkvc=
+3Rvcmllcy8yMDIyLzA3LzExL3RleGFzLWdyaWQtb3BlcmF0b3ItYXNrcy1yZXNpZGVudHMtdG8t=
+Y29uc2VydmUtcG93ZXItZHVyaW5nLWhlYXQtd2F2ZSZ1dG1fc291cmNlPWZhY2Vib29rX3NoYXJ=
+l/5cb51495fc942d6faa0ad4aeC7d1c1291/email>=C2=A0=C2=A0 <https://link.mornin=
+gbrew.com/click/28342730.1859339/aHR0cDovL3R3aXR0ZXIuY29tL2ludGVudC90d2VldD=
+90ZXh0PVRoZSUyMGdyaWQlMjBoYXMlMjBiZWVuJTIwb24lMjB0aGUlMjBicmluayUyMGJlZm9yZ=
+S4mdXJsPWh0dHBzOi8vd3d3Lm1vcm5pbmdicmV3LmNvbS9kYWlseS9zdG9yaWVzLzIwMjIvMDcv=
+MTEvdGV4YXMtZ3JpZC1vcGVyYXRvci1hc2tzLXJlc2lkZW50cy10by1jb25zZXJ2ZS1wb3dlci1=
+kdXJpbmctaGVhdC13YXZlJnV0bV9zb3VyY2U9dHdpdHRlcl9zaGFyZSZ2aWE9TW9ybmluZ0JyZX=
+c/5cb51495fc942d6faa0ad4aeC01d95bb5/email>=C2=A0=C2=A0 <https://link.mornin=
+gbrew.com/click/28342730.1859339/aHR0cDovL3d3dy5saW5rZWRpbi5jb20vc2hhcmVBcn=
+RpY2xlP3VybD1odHRwczovL3d3dy5tb3JuaW5nYnJldy5jb20vZGFpbHkvc3Rvcmllcy8yMDIyL=
+zA3LzExL3RleGFzLWdyaWQtb3BlcmF0b3ItYXNrcy1yZXNpZGVudHMtdG8tY29uc2VydmUtcG93=
+ZXItZHVyaW5nLWhlYXQtd2F2ZSZ1dG1fc291cmNlPWxpbmtlZGluX3NoYXJl/5cb51495fc942d=
+6faa0ad4aeC1c740005/email>=C2=A0=C2=A0 <mailto:?subject=3DCheck%20out%20thi=
+s%20story%20from%20Morning%20Brew%21&body=3DTexas%20power%20grid%20vs.%20ex=
+treme%20heat%3A%20Who%20ya%20got%3F%3A%20https%3A%2F%2Fwww.morningbrew.com%=
+2Fdaily%2Fstories%2F2022%2F07%2F11%2Ftexas-grid-operator-asks-residents-to-=
+conserve-power-during-heat-wave%3Futm_campaign%3Dmb%26utm_medium%3Dnewslett=
+er%26utm_source%3Dmorning_brew%0A%0AWant%20more%20great%20content%3F%20Subs=
+cribe%20to%20Daily%20Brew%20%E2%80%94%20Delivering%20the%20latest%20busines=
+s%20news%20from%20Wall%20St.%20to%20Silicon%20Valley%20daily.%0Ahttps%3A%2F=
+%2Fwww.morningbrew.com%2Fdaily%2Fr%2F%3Fkid%3D7fe756%26utm_source%3Demail_s=
+hare%0A>=20
+
+TOGETHER WITH CROWDSTREET
+
+=E2=80=98Hedging=E2=80=99 is the coolest new trend <#>
+And no, it has nothing to do with viral social media dances. In investing t=
+erms, a hedge is a type of investment that protects owners against the decr=
+easing value of cash during periods of high inflation=E2=80=94like right no=
+w, unfortunately.
+
+One of the best types of hedges is commercial real estate <https://link.mor=
+ningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuY3Jvd2RzdHJlZXQuY29tL2p=
+vaW4vbm93Lz91dG1fc291cmNlPXB1Ymxpc2hlci1tb3JuaW5nYnJldyZ1dG1fbWVkaXVtPW5ldy=
+UyMHNsZXR0ZXImdXRtX2NvbnRlbnQ9bWFya2V0LXZvbGF0aWxpdHkmdXRtX2NhbXBhaWduPW1hc=
+mtldHBsYWNl/5cb51495fc942d6faa0ad4aeG3b5d0a62/email>. As an alternative ass=
+et class with low correlation to the more intangible parts of the economy l=
+ike the stock market, it=E2=80=99s a smart add to your portfolio when the m=
+arkets get wonky.
+
+=E2=80=9COh Morning Brew,=E2=80=9D you=E2=80=99re saying, =E2=80=9Cthat=E2=
+=80=99s all well and good, but how am I supposed to invest in real estate?=
+=E2=80=9D
+
+We got you: Crowdstreet <https://link.morningbrew.com/click/28342730.185933=
+9/aHR0cHM6Ly93d3cuY3Jvd2RzdHJlZXQuY29tL2pvaW4vbm93Lz91dG1fc291cmNlPXB1Ymxpc=
+2hlci1tb3JuaW5nYnJldyZ1dG1fbWVkaXVtPW5ldyUyMHNsZXR0ZXImdXRtX2NvbnRlbnQ9bWFy=
+a2V0LXZvbGF0aWxpdHkmdXRtX2NhbXBhaWduPW1hcmtldHBsYWNl/5cb51495fc942d6faa0ad4=
+aeH3b5d0a62/email>.
+
+Crowdstreet helps individual investors invest in private equity real estate=
+=E2=80=94aka you. So be cool (financially savvy) and hedge. Start investing=
+ with Crowdstreet here <https://link.morningbrew.com/click/28342730.1859339=
+/aHR0cHM6Ly93d3cuY3Jvd2RzdHJlZXQuY29tL2pvaW4vbm93Lz91dG1fc291cmNlPXB1Ymxpc2=
+hlci1tb3JuaW5nYnJldyZ1dG1fbWVkaXVtPW5ldyUyMHNsZXR0ZXImdXRtX2NvbnRlbnQ9bWFya=
+2V0LXZvbGF0aWxpdHkmdXRtX2NhbXBhaWduPW1hcmtldHBsYWNl/5cb51495fc942d6faa0ad4a=
+eI3b5d0a62/email>.
+
+
+
+WORLD
+
+Tour de headlines <#> Image from the James Webb Space Telescope NASA, ESA, =
+CSA, and STScI
+James Webb gets its pictures developed: President Biden revealed the first =
+full-color image <https://link.morningbrew.com/click/28342730.1859339/aHR0c=
+HM6Ly93d3cubmFzYS5nb3Yvd2ViYmZpcnN0aW1hZ2VzP3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVk=
+aXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXc/5cb51495fc942d6faa0ad4a=
+eCee42634f/email> taken by NASA=E2=80=99s $10 billion James Webb Space Tele=
+scope, which can capture the highest quality and most detailed pictures of =
+space of any telescope ever built. The telescope snapped the sharpest and d=
+eepest picture of our universe to date, showing a mess of galaxies that no =
+human has seen before. It=E2=80=99s a teaser ahead of the release of more i=
+mages this morning, which will show far-out space phenomena as they would h=
+ave looked up to 13 billion years ago=E2=80=94not long after the Big Bang=
+=E2=80=94in stunning resolution.
+
+Birth control right next to the Mucinex. French drugmaker HRA Pharma asked =
+the FDA to allow <https://link.morningbrew.com/click/28342730.1859339/aHR0c=
+HM6Ly93d3cuY2JzbmV3cy5jb20vbmV3cy9vdmVyLXRoZS1jb3VudGVyLWJpcnRoLWNvbnRyb2wt=
+cGlsbC1ocmEtcGhhcm1hLXNlZWtzLWZkYS1hcHByb3ZhbC8_dXRtX2NhbXBhaWduPW1iJnV0bV9=
+tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW1vcm5pbmdfYnJldw/5cb51495fc942d6faa0=
+ad4aeC1ce05b58/email> its birth control pill to be sold over-the-counter in=
+ the US. It=E2=80=99s the first time the health regulator has considered OT=
+C birth control, and comes as states begin to limit access to reproductive =
+health care post Roe-reversal (the timing was coincidental, the company sai=
+d). If the pill is approved, the US would join the 100+ other countries tha=
+t currently offer birth control without a doctor=E2=80=99s note.
+
+GameStop has a thing for timing: The retailer released its long-awaited NFT=
+ marketplace <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6L=
+y93d3cuYmxvb21iZXJnLmNvbS9uZXdzL2FydGljbGVzLzIwMjItMDctMTEvZ2FtZXN0b3AtbGF1=
+bmNoZXMtbmZ0LW1hcmtldHBsYWNlLWFzLXNwZWN1bGF0aXZlLWZyZW56eS1jb29scz9zcm5kPXB=
+yZW1pdW0/5cb51495fc942d6faa0ad4aeC1b04896d/email> as part of its push into =
+the digital realm. Just one problem: The NFT space is in worse shape than T=
+exas=E2=80=99s power grid. In June, monthly sales of the digital items came=
+ in below $1 billion for the first time in a year, while sales volume on th=
+e world=E2=80=99s largest NFT marketplace, OpenSea, crashed more than 70% i=
+n June from the month prior, according to Bloomberg.
+
+HISTORY
+
+This day in history: =E2=80=98Disco Demolition Night=E2=80=99 <https://link=
+.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29=
+tL2RhaWx5L3N0b3JpZXMvZGlzY28tZGVtb2xpdGlvbi1uaWdodC00M3JkLWFubml2ZXJzYXJ5P3=
+V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX=
+2JyZXcmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0=
+ad4aeD4a88d642/email> This day in history: =E2=80=98Disco Demolition Night=
+=E2=80=99 <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93=
+d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvZGlzY28tZGVtb2xpdGlvbi1uaWdodC0=
+0M3JkLWFubml2ZXJzYXJ5P3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdX=
+RtX3NvdXJjZT1tb3JuaW5nX2JyZXcmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2Y=
+TJi/5cb51495fc942d6faa0ad4aeE4a88d642/email>A crowd storms the field at Com=
+iskey Park during an anti-disco promotion that went off the rails on July 1=
+2, 1979. Paul Natkin/Getty Images
+On this day in 1979, nearly 50,000 people packed Comiskey Park on the south=
+west side of Chicago to watch local DJ and notorious disco hater Steve Dahl=
+ blow up a bunch of disco records in between a White Sox doubleheader. =E2=
+=80=9CDisco Demolition Night <https://link.morningbrew.com/click/28342730.1=
+859339/aHR0cHM6Ly9lZG0uY29tL2ZlYXR1cmVzL3JlbWVtYmVyaW5nLWRpc2NvLWRlbW9saXRp=
+b24tbmlnaHQtMTk3OT91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9=
+zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0ad4aeC09b443f5/email>=E2=80=9D=
+ remains one of the seminal events in music history, reflecting the homopho=
+bic and racist backlash to a music genre with roots in gay and racial minor=
+ity communities.
+
+What happened: In an effort to attract more fans to attend a not-so-spectac=
+ular Sox season, the team partnered with Dahl to offer 98-cent tickets to a=
+nyone who brought a disco record to explode.
+
+The promotion turned out to be very successful=E2=80=94too successful. The =
+crowd devolved into a full-on riot, with thousands of mostly young, white m=
+en rushing the field to destroy records. One eyewitness, a former Comiskey =
+Park usher, told the Guardian <https://link.morningbrew.com/click/28342730.=
+1859339/aHR0cHM6Ly93d3cudGhlZ3VhcmRpYW4uY29tL211c2ljLzIwMTkvanVsLzE5L2Rpc2N=
+vLWRlbW9saXRpb24tdGhlLW5pZ2h0LXRoZXktdHJpZWQtdG8tY3J1c2gtYmxhY2stbXVzaWM_dX=
+RtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW1vcm5pbmdfY=
+nJldw/5cb51495fc942d6faa0ad4aeC2b0603f7/email> in 2019 that he noticed a lo=
+t of attendees didn=E2=80=99t even bother to bring disco albums=E2=80=94the=
+y just brought =E2=80=9Canything made by a Black artist.=E2=80=9D
+
+Mike Veeck, the White Sox=E2=80=99s promotion director and son of team owne=
+r Bill Veeck, has pushed back on the idea that the crowd was motivated by r=
+acial or anti-gay animus. =E2=80=9CThat angers me,=E2=80=9D he told WBUR <h=
+ttps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cud2J1ci5v=
+cmcvb25seWFnYW1lLzIwMTkvMDcvMTIvZGlzY28tZGVtb2xpdGlvbi1kYWhsLXZlZWNrLWNoaWN=
+hZ28td2hpdGUtc294P3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3=
+NvdXJjZT1tb3JuaW5nX2JyZXc/5cb51495fc942d6faa0ad4aeCa73d3c87/email> in 2019.=
+ =E2=80=9CIt had simply to do with choosing between rock =E2=80=98n=E2=80=
+=99 roll and disco and dance clubs.=E2=80=9D
+
+Zoom out: Disco was a $4 billion-a-year industry at the end of 1979, but by=
+ then it was on the decline. Some say July 12, 1979, was the day disco died=
+.=E2=80=94MM
+
+<https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuZmFjZW=
+Jvb2suY29tL3NoYXJlci5waHA_dT1odHRwczovL3d3dy5tb3JuaW5nYnJldy5jb20vZGFpbHkvc=
+3Rvcmllcy9kaXNjby1kZW1vbGl0aW9uLW5pZ2h0LTQzcmQtYW5uaXZlcnNhcnkmdXRtX3NvdXJj=
+ZT1mYWNlYm9va19zaGFyZQ/5cb51495fc942d6faa0ad4aeC18be4301/email>=C2=A0=C2=A0=
+ <https://link.morningbrew.com/click/28342730.1859339/aHR0cDovL3R3aXR0ZXIuY=
+29tL2ludGVudC90d2VldD90ZXh0PTUwLDAwMCUyMHBlb3BsZSUyMHBhY2tlZCUyMENvbWlza2V5=
+JTIwUGFyayUyMG9uJTIwdGhlJTIwc291dGh3ZXN0JTIwc2lkZSUyMG9mJTIwQ2hpY2FnbyUyMHR=
+vJTIwd2F0Y2glMjBsb2NhbCUyMERKJTIwYW5kJTIwbm90b3Jpb3VzJTIwZGlzY28lMjBoYXRlci=
+UyMFN0ZXZlJTIwRGFobCUyMGJsb3clMjB1cCUyMGElMjBidW5jaCUyMG9mJTIwZGlzY28lMjByZ=
+WNvcmRzJTIwaW4lMjBiZXQmdXJsPWh0dHBzOi8vd3d3Lm1vcm5pbmdicmV3LmNvbS9kYWlseS9z=
+dG9yaWVzL2Rpc2NvLWRlbW9saXRpb24tbmlnaHQtNDNyZC1hbm5pdmVyc2FyeSZ1dG1fc291cmN=
+lPXR3aXR0ZXJfc2hhcmUmdmlhPU1vcm5pbmdCcmV3/5cb51495fc942d6faa0ad4aeC440413d8=
+/email>=C2=A0=C2=A0 <https://link.morningbrew.com/click/28342730.1859339/aH=
+R0cDovL3d3dy5saW5rZWRpbi5jb20vc2hhcmVBcnRpY2xlP3VybD1odHRwczovL3d3dy5tb3Jua=
+W5nYnJldy5jb20vZGFpbHkvc3Rvcmllcy9kaXNjby1kZW1vbGl0aW9uLW5pZ2h0LTQzcmQtYW5u=
+aXZlcnNhcnkmdXRtX3NvdXJjZT1saW5rZWRpbl9zaGFyZQ/5cb51495fc942d6faa0ad4aeCce5=
+68d71/email>=C2=A0=C2=A0 <mailto:?subject=3DCheck%20out%20this%20story%20fr=
+om%20Morning%20Brew%21&body=3DThis%20day%20in%20history%3A%20%E2%80%98Disco=
+%20Demolition%20Night%E2%80%99%3A%20https%3A%2F%2Fwww.morningbrew.com%2Fdai=
+ly%2Fstories%2Fdisco-demolition-night-43rd-anniversary%3Futm_campaign%3Dmb%=
+26utm_medium%3Dnewsletter%26utm_source%3Dmorning_brew%0A%0AWant%20more%20gr=
+eat%20content%3F%20Subscribe%20to%20Daily%20Brew%20%E2%80%94%20Delivering%2=
+0the%20latest%20business%20news%20from%20Wall%20St.%20to%20Silicon%20Valley=
+%20daily.%0Ahttps%3A%2F%2Fwww.morningbrew.com%2Fdaily%2Fr%2F%3Fkid%3D7fe756=
+%26utm_source%3Demail_share%0A>
+
+FOOD
+
+Theme Park Week: Dippin=E2=80=99 into the Dots market <https://link.morning=
+brew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx=
+5L3N0b3JpZXMvZGlwcGluLWRvdHMtYWNxdWlzaXRpb24tdGhlbWUtcGFyay13ZWVrP3V0bV9jYW=
+1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXcmb=
+WlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeD1c=
+962158/email> Dippin' Dots <https://link.morningbrew.com/click/28342730.185=
+9339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvZGlwcGluLWRvdH=
+MtYWNxdWlzaXRpb24tdGhlbWUtcGFyay13ZWVrP3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtP=
+W5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXcmbWlkPTVmN2I2MDlmMGQxOGFkNWM0=
+YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeE1c962158/email>Dippin' Dots v=
+ia YouTube
+Dippin=E2=80=99 Dots, which once hailed itself as the =E2=80=9Cice cream of=
+ the future,=E2=80=9D has been a theme park staple since the 1990s. Nothing=
+ had the power to thrill, entice, and lead little brothers to full several-=
+hour-long meltdowns quite like the flash-frozen novelty dessert. While many=
+ onetime Dippin=E2=80=99 Dots stans have lost touch with the treat, it hasn=
+=E2=80=99t stopped hustling. In late June, J&J Snack Foods=E2=80=99 closed =
+its acquisition <https://link.morningbrew.com/click/28342730.1859339/aHR0cH=
+M6Ly9maW5hbmNlLnlhaG9vLmNvbS9uZXdzL2otai1zbmFjay1mb29kcy1jb3JwLTEzMTUwMDA2M=
+y5odG1sP3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1t=
+b3JuaW5nX2JyZXc/5cb51495fc942d6faa0ad4aeCc5da5052/email> of the company for=
+ $222 million.
+
+It=E2=80=99s easy to imagine the timeline if Dippin=E2=80=99 Dots debuted t=
+oday: It would instantly be the official ice cream of F1, its Twitter would=
+ use the voice of a 23-year-old nihilistic crypto enthusiast, and it would =
+have a market value surpassing Ford and GM combined within six months. But =
+Dippin=E2=80=99 Dots was invented in 1988 in Paducah, Kentucky, by a microb=
+iologist who was trying to make cow feed. So, the company=E2=80=99s had a s=
+lightly rockier road:
+
+Due to their extreme freezing temperature (-40 degrees Fahrenheit), Dippin=
+=E2=80=99 Dots can=E2=80=99t be kept at home or in grocery stores, so the c=
+ompany had to focus on selling the product at more novel locations, like th=
+eme parks.
+
+It succeeded, moving $47 million of product at its peak in 2006.
+
+Dippin=E2=80=99 Dots lost a nine-year legal battle with a competitor and fi=
+led for bankruptcy in 2011.
+
+A 2019 plant explosion and the pandemic rocked the company=E2=80=99s sales.
+
+Through it all, though, Dippin=E2=80=99 Dots lives to melt another day. The=
+ ice cream beads are currently sold in seven countries, and can be purchase=
+d (surrounded by lots of dry ice) for home delivery.=E2=80=94MK
+
+<https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuZmFjZW=
+Jvb2suY29tL3NoYXJlci5waHA_dT1odHRwczovL3d3dy5tb3JuaW5nYnJldy5jb20vZGFpbHkvc=
+3Rvcmllcy9kaXBwaW4tZG90cy1hY3F1aXNpdGlvbi10aGVtZS1wYXJrLXdlZWsmdXRtX3NvdXJj=
+ZT1mYWNlYm9va19zaGFyZQ/5cb51495fc942d6faa0ad4aeCd79bb978/email>=C2=A0=C2=A0=
+ <https://link.morningbrew.com/click/28342730.1859339/aHR0cDovL3R3aXR0ZXIuY=
+29tL2ludGVudC90d2VldD90ZXh0PVRoZSUyMGZ1dHVyZSUyMGlzJTIwaGVyZS4mdXJsPWh0dHBz=
+Oi8vd3d3Lm1vcm5pbmdicmV3LmNvbS9kYWlseS9zdG9yaWVzL2RpcHBpbi1kb3RzLWFjcXVpc2l=
+0aW9uLXRoZW1lLXBhcmstd2VlayZ1dG1fc291cmNlPXR3aXR0ZXJfc2hhcmUmdmlhPU1vcm5pbm=
+dCcmV3/5cb51495fc942d6faa0ad4aeC831d2e87/email>=C2=A0=C2=A0 <https://link.m=
+orningbrew.com/click/28342730.1859339/aHR0cDovL3d3dy5saW5rZWRpbi5jb20vc2hhc=
+mVBcnRpY2xlP3VybD1odHRwczovL3d3dy5tb3JuaW5nYnJldy5jb20vZGFpbHkvc3Rvcmllcy9k=
+aXBwaW4tZG90cy1hY3F1aXNpdGlvbi10aGVtZS1wYXJrLXdlZWsmdXRtX3NvdXJjZT1saW5rZWR=
+pbl9zaGFyZQ/5cb51495fc942d6faa0ad4aeC06453a43/email>=C2=A0=C2=A0 <mailto:?s=
+ubject=3DCheck%20out%20this%20story%20from%20Morning%20Brew%21&body=3DTheme=
+%20Park%20Week%3A%20Dippin%E2%80%99%20into%20the%20Dots%20market%3A%20https=
+%3A%2F%2Fwww.morningbrew.com%2Fdaily%2Fstories%2Fdippin-dots-acquisition-th=
+eme-park-week%3Futm_campaign%3Dmb%26utm_medium%3Dnewsletter%26utm_source%3D=
+morning_brew%0A%0AWant%20more%20great%20content%3F%20Subscribe%20to%20Daily=
+%20Brew%20%E2%80%94%20Delivering%20the%20latest%20business%20news%20from%20=
+Wall%20St.%20to%20Silicon%20Valley%20daily.%0Ahttps%3A%2F%2Fwww.morningbrew=
+.com%2Fdaily%2Fr%2F%3Fkid%3D7fe756%26utm_source%3Demail_share%0A>
+
+GRAB BAG
+
+Key performance indicators <#> Lofi Girl on YouTube Lofi Girl
+Stat: Lofi Girl=E2=80=99s YouTube video =E2=80=9Clofi hip hop radio - beats=
+ to relax/study to <https://link.morningbrew.com/click/28342730.1859339/aHR=
+0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj01cWFwNWFPNGk5QQ/5cb51495fc942d6faa0=
+ad4aeC506d8e6d/email>=E2=80=9D has more than 668 million views. But people =
+seeking out chill beats have had to look elsewhere, because that video and =
+another Lofi Girl vid were mistakenly removed <https://link.morningbrew.com=
+/click/28342730.1859339/aHR0cHM6Ly93d3cudmljZS5jb20vZW4vYXJ0aWNsZS9ha2VnanA=
+veW91dHViZS1hcG9sb2dpemVzLWZvci1yZW1vdmluZy1pY29uaWMtbG9maS1naXJsP3V0bV9jYW=
+1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXc/5=
+cb51495fc942d6faa0ad4aeCb5a5e9ee/email> by YouTube on Sunday after being se=
+rved a copyright takedown notice. YouTube said later that the takedown clai=
+m was abusive and pledged to reinstate both videos.
+
+Quote: =E2=80=9CNo.=E2=80=9D
+
+Costco CEO Craig Jelinek told CNBC the company will not be raising prices <=
+https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuY25iYy5=
+jb20vMjAyMi8wNy8xMS9jb3N0Y28tY2Vvcy1vbmUtd29yZC1hbnN3ZXItdG8td2hldGhlci1oZS=
+13b3VsZC1yYWlzZS10aGUtcHJpY2Utb2YtaG90LWRvZ3Mtbm8uaHRtbD91dG1fY2FtcGFpZ249b=
+WImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc9=
+42d6faa0ad4aeC77452f65/email> on its hot dogs no matter how many times you =
+ask. But people are asking, because Costco has recently raised prices on so=
+me other food court items, such as its chicken bake ($2.99 =E2=86=92 $3.99)=
+ and 20-ounce soda ($0.59 =E2=86=92 $0.69). Costco=E2=80=99s hot dog and so=
+da combo has cost $1.50 since its introduction in the mid-1980s.
+
+Read: On BS in investing. (Noahpinion <https://link.morningbrew.com/click/2=
+8342730.1859339/aHR0cHM6Ly9ub2FocGluaW9uLnN1YnN0YWNrLmNvbS9wL29uLWJ1bGxzaGl=
+0LWluLWludmVzdGluZz91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV=
+9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0ad4aeC70cd04d8/email>)
+
+
+
+TOGETHER WITH HOKA
+
+HOKA <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cua=
+G9rYS5jb20vZW4vdXMvP3V0bV9zb3VyY2U9bW9ybmluZ2JyZXcmdXRtX21lZGl1bT1yZnImdXRt=
+X2NhbXBhaWduPTIwMjJNb3JuaW5nQnJldyZ1dG1fY29udGVudD1QYWlkRGlyZWN0UHVi/5cb514=
+95fc942d6faa0ad4aeDbfdf609c/email>
+Hit the ground running flying. Where can movement take you? The possibiliti=
+es are limitless. HOKA harnesses the power of movement to build lightweight=
+, high-cushioned footwear that makes more things possible=E2=80=94like gett=
+ing to the starting line of a wonderful, new, joy-filled adventure. Find th=
+e shoes that=E2=80=99ll get you flying <https://link.morningbrew.com/click/=
+28342730.1859339/aHR0cHM6Ly93d3cuaG9rYS5jb20vZW4vdXMvP3V0bV9zb3VyY2U9bW9ybm=
+luZ2JyZXcmdXRtX21lZGl1bT1yZnImdXRtX2NhbXBhaWduPTIwMjJNb3JuaW5nQnJldyZ1dG1fY=
+29udGVudD1QYWlkRGlyZWN0UHVi/5cb51495fc942d6faa0ad4aeEbfdf609c/email>.=C2=A0
+
+
+
+WHAT ELSE IS BREWING
+
+Gap CEO Sonia Syngal <https://link.morningbrew.com/click/28342730.1859339/a=
+HR0cHM6Ly93d3cuY25iYy5jb20vMjAyMi8wNy8xMS9nYXAtY2VvLXNvbmlhLXN5bmdhbC1pcy1z=
+dGVwcGluZy1kb3duLWVmZmVjdGl2ZS1pbW1lZGlhdGVseS5odG1sP3V0bV9jYW1wYWlnbj1tYiZ=
+1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXc/5cb51495fc942d=
+6faa0ad4aeC9da2561b/email> is stepping down from her position atop the stru=
+ggling retailer.
+
+India <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cu=
+YmJjLmNvbS9uZXdzL3NjaWVuY2UtZW52aXJvbm1lbnQtNjIxMjY0MTM_dXRtX2NhbXBhaWduPW1=
+iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW1vcm5pbmdfYnJldw/5cb51495fc9=
+42d6faa0ad4aeC78a815eb/email> will overtake China as the world=E2=80=99s mo=
+st populous country next year, according to the UN.
+
+Speaking of India <https://link.morningbrew.com/click/28342730.1859339/aHR0=
+cHM6Ly93d3cuYmJjLmNvbS9uZXdzL3dvcmxkLWFzaWEtaW5kaWEtNjIxMjM5NjY_dXRtX2NhbXB=
+haWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW1vcm5pbmdfYnJldw/5cb=
+51495fc942d6faa0ad4aeC41471d37/email>: Police arrested a group of Indian co=
+n men who staged a fake Indian Premier League cricket match on a farm and d=
+uped Russian gamblers into betting on it.
+
+A larger share <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM=
+6Ly93d3cuYmxvb21iZXJnLmNvbS9uZXdzL2FydGljbGVzLzIwMjItMDctMTEvaG9tZS1zYWxlLW=
+NhbmNlbGxhdGlvbnMtanVtcGVkLWluLWp1bmUtYXMtYnV5ZXJzLWJhY2tlZC1hd2F5P3NybmQ9c=
+HJlbWl1bQ/5cb51495fc942d6faa0ad4aeCa1b62343/email> of US home sales fell th=
+rough last month than at any point since April 2020, according to Redfin.
+
+The successor <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6=
+Ly93d3cucmV1dGVycy5jb20vYnVzaW5lc3MvcmV0YWlsLWNvbnN1bWVyL25vLWZyaWVzLXRpbGw=
+tYXV0dW1uLXNvbWUtbWNkb25hbGRzLXJ1c3NpYW4tc3VjY2Vzc29yLXJlc3RhdXJhbnRzLTIwMj=
+ItMDctMTEvP3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZ=
+T1tb3JuaW5nX2JyZXc/5cb51495fc942d6faa0ad4aeC0441ec71/email> to McDonald=E2=
+=80=99s in Russia has a major problem: a shortage of french fries.
+
+Real Housewives of Salt Lake City <https://link.morningbrew.com/click/28342=
+730.1859339/aHR0cHM6Ly93d3cubmJjbmV3cy5jb20vbmV3cy91cy1uZXdzL3JlYWwtaG91c2V=
+3aXZlcy1zYWx0LWxha2UtY2l0eS1zdGFyLWplbi1zaGFoLXBsZWFkcy1ndWlsdHktd2lyZS1mcm=
+F1ZC1yY25hMzc2MzE_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc=
+291cmNlPW1vcm5pbmdfYnJldw/5cb51495fc942d6faa0ad4aeC8154f5d2/email> star Jen=
+ Shah pleaded guilty to running a fraudulent telemarketing scheme.
+
+BREW'S BETS
+
+This should keep you occupied: An interactive history of the world <https:/=
+/link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9oaXN0b2dyYXBoeS5pby=
+8_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW1vcm5pb=
+mdfYnJldw/5cb51495fc942d6faa0ad4aeC2372f57b/email>, as told through Wikiped=
+ia articles.
+
+Avalanche POV: Here=E2=80=99s what it looks like to be staring down an aval=
+anche <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly90d2l0=
+dGVyLmNvbS94cnVpenRydS9zdGF0dXMvMTU0NjIxOTY2MjY5MzgzMDY2NT9zPTIwJnQ9X0hNblZ=
+jYi0yT0RvUGlaTmtpTTE0QQ/5cb51495fc942d6faa0ad4aeCfc228141/email> in Kyrgyzs=
+tan as it hurtles toward you. (The tourist who took this video, and others =
+with him, survived.)
+
+Some people have a lot of time on their hands: And they make masterpieces l=
+ike this <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly90d=
+2l0dGVyLmNvbS9waGFuMjE4Ny9zdGF0dXMvMTU0NjMyMTUwMTI0MjIzMjgzND9zPTIwJnQ9UDlu=
+alRhRi1BdnEzU1BIZk5tbFVPZw/5cb51495fc942d6faa0ad4aeC00dae6ae/email>.
+
+Join the experiment: Malcolm Gladwell isn=E2=80=99t worried about being wro=
+ng=E2=80=94at least, not on this season of Revisionist History, his podcast=
+ about things misunderstood and overlooked. Why? Because the list of things=
+ we don=E2=80=99t know is way longer than the things we do. Listen now <htt=
+ps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9wb2RjYXN0cy5wdX=
+Noa2luLmZtL3JoNz9zaWQ9bW9ybmluZ2JyZXc/5cb51495fc942d6faa0ad4aeCecfdf769/ema=
+il>.
+
+GAMES
+
+The puzzle section <#>
+Brew Mini: Refresh your memory of The Queen=E2=80=99s Gambit, the Roswell U=
+FO sighting, and songs that ____ in today=E2=80=99s Mini crossword. Play it=
+ here <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cu=
+bW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvMjAyMi8wNy8xMS9icmV3LW1pbmktZ2FtYml=
+0P3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW=
+5nX2JyZXcmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6f=
+aa0ad4aeC5c7f5128/email>.
+
+Stadium trivia
+
+After 21 years as Heinz Field, the Pittsburgh Steelers=E2=80=99 stadium is =
+getting a new name: Acrisure Stadium, named after the Michigan-based insura=
+nce company that acquired the naming rights.
+
+Here=E2=80=99s a quiz: There are only three NFL stadiums that are not named=
+ after corporate sponsors. Can you identify them?
+
+Why are so many states legalizing cannabis? <https://link.morningbrew.com/c=
+lick/28342730.1859339/aHR0cHM6Ly9iaXQubHkvM1JwMENPRj91dG1fY2FtcGFpZ249bWImd=
+XRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6=
+faa0ad4aeE9b31c685/email> Why are so many states legalizing cannabis? <http=
+s://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9iaXQubHkvM1JwMEN=
+PRj91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bW9ybm=
+luZ19icmV3/5cb51495fc942d6faa0ad4aeF9b31c685/email>
+Many states have taken steps toward cannabis legalization, but federal law =
+still prohibits its sale and consumption. What does this mean for the legal=
+ weed economy? Watch now to learn more <https://link.morningbrew.com/click/=
+28342730.1859339/aHR0cHM6Ly9iaXQubHkvM1JwMENPRj91dG1fY2FtcGFpZ249bWImdXRtX2=
+1lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0a=
+d4aeG9b31c685/email>.
+
+For more from the Brew:
+
+What does it mean to be a =E2=80=9Cmulti-hyphenate=E2=80=9D and make it all=
+ work? On Business Casual, Nora investigates with entrepreneur Hitha Palepu=
+. Listen <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9sa=
+W5rLmNodGJsLmNvbS9CN1pFMC1EdT91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0=
+dGVyJnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0ad4aeC12d12c43/emai=
+l> or watch here <https://link.morningbrew.com/click/28342730.1859339/aHR0c=
+HM6Ly9iaXQubHkvM3l6Ymtjej91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVy=
+JnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0ad4aeC5a734eb8/email>.
+
+=F0=9F=9B=8D Loyalty is everything. Julie Bornstein turned that motto into =
+millions with Sephora=E2=80=99s Beauty Insider program. Here=E2=80=99s how =
+she did it <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9=
+3d3cucmV0YWlsYnJldy5jb20vZ2MvMy1zdGVwcy10by1idWlsZC1hbi1lZmZlY3RpdmUtbG95YW=
+x0eS1wcm9ncmFtP3V0bV9jYW1wYWlnbj1ydGJfaW5fbWJfMDcwODIyJnV0bV9tZWRpdW09bmV3c=
+2xldHRlciZ1dG1fc291cmNlPWNyb3NzcHJvbW8lMjAmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2=
+OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeC3ba86cf0/email>.
+
+SHARE THE BREW
+
+Share Morning Brew <https://link.morningbrew.com/click/28342730.1859339/aHR=
+0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3JlZmVyLWEtZnJpZW5kP2FjY2Vzc190b2=
+tlbj1Xa1U5aWVSNUdKcmhrNkdnVndpaTF4OTUmdXRtX3NvdXJjZT1zaGFyZV9zZWN0aW9uJnV0b=
+V9tZWRpdW09bmV3c2xldHRlciZ1dG1fY2FtcGFpZ249bWImbWlkPTVmN2I2MDlmMGQxOGFkNWM0=
+YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeEd0025528/email> with your fri=
+ends, acquire free Brew swag, and then acquire more friends as a result of =
+your fresh Brew swag.
+
+We=E2=80=99re saying we=E2=80=99ll give you free stuff and more friends if =
+you share a link. One link.
+
+Your referral count: 5
+
+Click to Share <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM=
+6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3JlZmVyLWEtZnJpZW5kP2FjY2Vzc190b2tlbj=
+1Xa1U5aWVSNUdKcmhrNkdnVndpaTF4OTUmdXRtX3NvdXJjZT1zaGFyZV9zZWN0aW9uJnV0bV9tZ=
+WRpdW09bmV3c2xldHRlciZ1dG1fY2FtcGFpZ249bWImbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2=
+OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeFd0025528/email> Or copy & paste y=
+our referral link to others:morningbrew.com/daily/r/?kid=3D7fe756 <https://=
+link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXc=
+uY29tL2RhaWx5L3IvP2tpZD03ZmU3NTYmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMj=
+g2YTJi/5cb51495fc942d6faa0ad4aeC54b7c760/email>
+
+ANSWER
+
+Lambeau Field in Green Bay, Soldier Field in Chicago, and Paul Brown Stadiu=
+m in Cincinnati. Something about the upper Midwest and clinging to traditio=
+n=E2=80=A6
+
+<https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuZmFjZW=
+Jvb2suY29tL01vcm5pbmdCcmV3Lz91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0d=
+GVyJnV0bV9zb3VyY2U9Zm9vdGVy/5cb51495fc942d6faa0ad4aeC42aaa68a/email>=C2=A0 =
+<https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly90d2l0dGVyLm=
+NvbS9Nb3JuaW5nQnJldz91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0b=
+V9zb3VyY2U9Zm9vdGVy/5cb51495fc942d6faa0ad4aeCc780a8ca/email>=C2=A0 <https:/=
+/link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuaW5zdGFncmFtLm=
+NvbS9tb3JuaW5nYnJldy8_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1d=
+G1fc291cmNlPWZvb3Rlcg/5cb51495fc942d6faa0ad4aeCef0d949f/email>=C2=A0 <https=
+://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubGlua2VkaW4u=
+Y29tL2NvbXBhbnkvOTQ1NTk3OC8_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHR=
+lciZ1dG1fc291cmNlPWZvb3Rlcg/5cb51495fc942d6faa0ad4aeC7a2a6019/email>=C2=A0 =
+<https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cudGlrdG=
+9rLmNvbS9AbW9ybmluZ2JyZXcvP3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0Z=
+XImdXRtX3NvdXJjZT1mb290ZXI/5cb51495fc942d6faa0ad4aeCdf0c1609/email>=C2=A0 <=
+https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cueW91dHV=
+iZS5jb20vYy9Nb3JuaW5nQnJld0RhaWx5Lz9zdWJfY29uZmlybWF0aW9uPTEmdXRtX2NhbXBhaW=
+duPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPWZvb3Rlcg/5cb51495fc942d=
+6faa0ad4aeCfd09566c/email>
+Written by Neal Freyman <https://link.morningbrew.com/click/28342730.185933=
+9/aHR0cHM6Ly90d2l0dGVyLmNvbS9OZWFsX0ZyZXltYW4vP3V0bV9zb3VyY2U9Zm9vdGVy/5cb5=
+1495fc942d6faa0ad4aeCa33cbc6a/email>, Max Knoblauch <https://link.morningbr=
+ew.com/click/28342730.1859339/aHR0cHM6Ly90d2l0dGVyLmNvbS9NYXhLbm9ibGF1Y2gvP=
+3V0bV9zb3VyY2U9Zm9vdGVy/5cb51495fc942d6faa0ad4aeC1707cb60/email>, Matty Mer=
+ritt <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly90d2l0d=
+GVyLmNvbS9tYXR0eW5vdG1hZGRpZS8_dXRtX3NvdXJjZT1mb290ZXI/5cb51495fc942d6faa0a=
+d4aeCc926fa0f/email>, and Joseph Abrams
+
+Was this email forwarded to you? Sign up here <https://link.morningbrew.com=
+/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5P2tpZD0=
+3ZmU3NTYmdXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW=
+Zvb3Rlcl9mb3J3YXJkZWQ/5cb51495fc942d6faa0ad4aeC61dfa46e/email>.
+
+WANT MORE BREW?
+
+ Industry news, with a sense of humor =E2=86=92
+
+ CFO Brew <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93=
+d3cuY2ZvYnJldy5jb20vP2VtYWlsPXZhYXJuYW5AZ21haWwuY29tJnV0bV9jYW1wYWlnbj1tYiZ=
+1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1mb290ZXI/5cb51495fc942d6faa0ad4=
+aeCa2e0cd87/email>: your go-to source for global finance insights
+
+  Emerging Tech Brew <https://link.morningbrew.com/click/28342730.1859339/a=
+HR0cHM6Ly93d3cuZW1lcmdpbmd0ZWNoYnJldy5jb20vP2VtYWlsPXZhYXJuYW5AZ21haWwuY29t=
+JnV0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1mb290ZXI=
+mbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeC=
+ee11ba33/email>: AI, crypto, space, autonomous vehicles, and more
+
+  Future Social <https://link.morningbrew.com/click/28342730.1859339/aHR0cH=
+M6Ly93d3cubWFya2V0aW5nYnJldy5jb20vZnV0dXJlLXNvY2lhbC8_ZW1haWw9dmFhcm5hbkBnb=
+WFpbC5jb20mdXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNl=
+PWZvb3RlciZtaWQ9NWY3YjYwOWYwZDE4YWQ1YzRiYjY4ZDc1NWQyODZhMmI/5cb51495fc942d6=
+faa0ad4aeC17cf0d8e/email>: the Brew's take on the world of social media
+
+  HR Brew <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93=
+d3cuaHItYnJldy5jb20vP2VtYWlsPXZhYXJuYW5AZ21haWwuY29tJnV0bV9jYW1wYWlnbj1tYiZ=
+1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1mb290ZXImbWlkPTVmN2I2MDlmMGQxOG=
+FkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeBc265f045/email>: analys=
+is of the employee-employer relationship
+
+  IT Brew <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93=
+d3cuaXRicmV3LmNvbS8_ZW1haWw9dmFhcm5hbkBnbWFpbC5jb20mdXRtX2NhbXBhaWduPW1iJnV=
+0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPWZvb3RlciZtaWQ9NWY3YjYwOWYwZDE4YW=
+Q1YzRiYjY4ZDc1NWQyODZhMmI/5cb51495fc942d6faa0ad4aeC0b1126fc/email>: moving =
+business forward; innovation analysis for the CTO, CIO & every IT pro in-be=
+tween
+
+  Marketing Brew <https://link.morningbrew.com/click/28342730.1859339/aHR0c=
+HM6Ly93d3cubWFya2V0aW5nYnJldy5jb20vP2VtYWlsPXZhYXJuYW5AZ21haWwuY29tJnV0bV9j=
+YW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1mb290ZXImbWlkPTV=
+mN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeB4bafbb74=
+/email>: the buzziest happenings in marketing and advertising
+
+  Retail Brew <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6=
+Ly93d3cucmV0YWlsYnJldy5jb20vP2VtYWlsPXZhYXJuYW5AZ21haWwuY29tJnV0bV9jYW1wYWl=
+nbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1mb290ZXImbWlkPTVmN2I2MD=
+lmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeCfcf02979/email>=
+: retail trends from DTC to "buy now, pay later"
+
+   Tips for smarter living =E2=86=92
+
+ Money Scoop <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6L=
+y93d3cubW9ybmluZ2JyZXcuY29tL21vbmV5LXNjb29wLz9lbWFpbD12YWFybmFuQGdtYWlsLmNv=
+bSZ1dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9Zm9vdGV=
+yJm1pZD01ZjdiNjA5ZjBkMThhZDVjNGJiNjhkNzU1ZDI4NmEyYg/5cb51495fc942d6faa0ad4a=
+eC3ec216bf/email>: your personal finance upgrade
+
+  Money With Katie <https://link.morningbrew.com/click/28342730.1859339/aHR=
+0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL21vbmV5LXdpdGgta2F0aWU_ZW1haWw9dmFhcm5hbk=
+BnbWFpbC5jb20mdXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291c=
+mNlPWZvb3RlciZtaWQ9NWY3YjYwOWYwZDE4YWQ1YzRiYjY4ZDc1NWQyODZhMmI/5cb51495fc94=
+2d6faa0ad4aeB13de7bbb/email>: manifest your financial freedom
+
+  Sidekick <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9=
+3d3cubW9ybmluZ2JyZXcuY29tL3NpZGVraWNrLz9lbWFpbD12YWFybmFuQGdtYWlsLmNvbSZ1dG=
+1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9Zm9vdGVyJm1pZ=
+D01ZjdiNjA5ZjBkMThhZDVjNGJiNjhkNzU1ZDI4NmEyYg/5cb51495fc942d6faa0ad4aeCbba8=
+e012/email>: lifestyle recs from every corner of the internet
+
+  Podcasts =E2=86=92 Business Casual <https://link.morningbrew.com/click/28=
+342730.1859339/aHR0cHM6Ly9saW5rLmNodGJsLmNvbS94MUNZUEExYj91dG1fY2FtcGFpZ249=
+bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9Zm9vdGVy/5cb51495fc942d6faa=
+0ad4aeBa5d30285/email>, Founder's Journal <https://link.morningbrew.com/cli=
+ck/28342730.1859339/aHR0cHM6Ly9saW5rLmNodGJsLmNvbS92bjB5U1I2dT91dG1fY2FtcGF=
+pZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9Zm9vdGVy/5cb51495fc942=
+d6faa0ad4aeBc49b6b36/email>, Imposters <https://link.morningbrew.com/click/=
+28342730.1859339/aHR0cHM6Ly9pbXBvc3RlcnMubW9ybmluZ2JyZXcuY29tLz91dG1fY2FtcG=
+FpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9Zm9vdGVyJm1pZD01ZjdiN=
+jA5ZjBkMThhZDVjNGJiNjhkNzU1ZDI4NmEyYg/5cb51495fc942d6faa0ad4aeB64db004f/ema=
+il>, and The Money with Katie Show <https://link.morningbrew.com/click/2834=
+2730.1859339/aHR0cHM6Ly9wb2RjYXN0Lm1vbmV5d2l0aGthdGllLmNvbS8_dXRtX2NhbXBhaW=
+duPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPWZvb3Rlcg/5cb51495fc942d=
+6faa0ad4aeB26c63abc/email>
+
+YouTube <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3=
+cueW91dHViZS5jb20vYy9Nb3JuaW5nQnJld0RhaWx5Lz9zdWJfY29uZmlybWF0aW9uPTEmdXRtX=
+2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPWZvb3Rlcg/5cb51=
+495fc942d6faa0ad4aeDfd09566c/email>
+
+Accelerate Your Career with our Courses =E2=86=92
+
+Business Essentials Accelerator <https://link.morningbrew.com/click/2834273=
+0.1859339/aHR0cHM6Ly9sZWFybmluZy5tb3JuaW5nYnJldy5jb20vY2FyZWVyP3V0bV9jYW1wY=
+Wlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1mb290ZXImbWlkPTVmN2I2=
+MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJiI2JlYQ/5cb51495fc942d6faa0ad4aeBbdd04f8=
+5/email>: Become a better communicator, operator, and innovator.
+
+Leadership Accelerator <https://link.morningbrew.com/click/28342730.1859339=
+/aHR0cHM6Ly9sZWFybmluZy5tb3JuaW5nYnJldy5jb20vY2FyZWVyP3V0bV9jYW1wYWlnbj1tYi=
+Z1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1mb290ZXImbWlkPTVmN2I2MDlmMGQxO=
+GFkNWM0YmI2OGQ3NTVkMjg2YTJiI2xh/5cb51495fc942d6faa0ad4aeBa50d78f5/email>: G=
+row your team, grow yourself, grow your impact.
+
+Business Analytics Accelerator <https://link.morningbrew.com/click/28342730=
+.1859339/aHR0cHM6Ly9sZWFybmluZy5tb3JuaW5nYnJldy5jb20vY2FyZWVyP3V0bV9jYW1wYW=
+lnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1mb290ZXImbWlkPTVmN2I2M=
+DlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJiI2JhYQ/5cb51495fc942d6faa0ad4aeBe75f4fd7=
+/email>: Understand the business of numbers and make better decisions with =
+data.
+
+ADVERTISE <https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9k=
+b2NzLmdvb2dsZS5jb20vZm9ybXMvZC9lLzFGQUlwUUxTY0M5OVdXU3VqRU53MFY4WFdNNWFHSHV=
+OM1FxMm9DdndqaWhhRlJVWUpKTUdWbVFBL3ZpZXdmb3JtP3V0bV9zb3VyY2U9Zm9vdGVy/5cb51=
+495fc942d6faa0ad4aeC40b42ede/email> // CAREERS <https://link.morningbrew.co=
+m/click/28342730.1859339/aHR0cHM6Ly9qb2JzLmxldmVyLmNvL21vcm5pbmdicmV3P3V0bV=
+9zb3VyY2U9Zm9vdGVy/5cb51495fc942d6faa0ad4aeC1d8ce729/email> // SHOP <https:=
+//link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9zaG9wLm1vcm5pbmdic=
+mV3LmNvbS8_dXRtX3NvdXJjZT1jcm9zc3Byb21vJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1f=
+Y2FtcGFpZ249bWJfZm9vdGVyJm1pZD01ZjdiNjA5ZjBkMThhZDVjNGJiNjhkNzU1ZDI4NmEyYg/=
+5cb51495fc942d6faa0ad4aeCcee04778/email> // FAQ <https://link.morningbrew.c=
+om/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2Fib3V0L2Zhc=
+T91dG1fc291cmNlPWZvb3RlciZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX2NhbXBhaWduPW1i=
+/5cb51495fc942d6faa0ad4aeC7cf91dad/email> Update your email preferences or =
+unsubscribe here <https://link.morningbrew.com/click/28342730.1859339/aHR0c=
+HM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2FjY291bnQvV2tVOWllUjVHSnJoazZHZ1Z3aWkxeDk1=
+L2VkaXQ_YmlkPTI4MzQyNzMw/5cb51495fc942d6faa0ad4aeC499a9dd1/email>. View our=
+ privacy policy here <https://link.morningbrew.com/click/28342730.1859339/a=
+HR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL3ByaXZhY3k_dXRtX3NvdXJjZT1mb290ZXImdXRt=
+X21lZGl1bT1uZXdzbGV0dGVyJnV0bV9jYW1wYWlnbj1tYg/5cb51495fc942d6faa0ad4aeC2a6=
+34761/email>. Copyright =C2=A9 2022 Morning Brew. All rights reserved. 22 W=
+ 19th St, 4th Floor, New York, NY 10011
+------=_Part_4078852_749597191.1657619555772
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:v=3D"urn:sc=
+hemas-microsoft-com:vml" xmlns=3D"https://www.w3.org/1999/xhtml">
+<head>
+<meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible">
+<meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"Content-Type">
+<meta content=3D"width=3Ddevice-width, initial-scale=3D1" name=3D"viewport"=
+>
+<title>Daily Brew // Morning Brew // Update</title>
+<!--[if mso]><style data-roadie-ignore=3D'' type=3D'text/css'>
+body, table, tr, td, h1, h2, h3, h4, p, a, span{font-family: Arial, Helveti=
+ca, sans-serif;}.stb-ref-count{background-color: #1c7ff2;}.link{color: #1c7=
+ff2 !important; text-decoration: underline !important;}.disclaimer{font-siz=
+e:8px;}
+</style><![endif]-->
+<style>@media only screen and (max-width:600px) {
+body{margin-right:1px !important;margin-left:1px !important}
+.clear{display:block !important;width:100% !important;text-align:center !im=
+portant}
+.clear p{margin-bottom:2px !important;margin-top:0 !important}
+.clear img{width:160px !important}
+.img-responsive{width:100% !important;display:block}
+.c6{margin-right:2px !important;margin-left:2px !important}
+.ticker{width:40% !important;text-align:center !important}
+.symbol{display:block !important;margin:0 auto !important;text-align:center=
+ !important}
+.pads10{padding-right:15px !important;padding-left:15px !important}
+.pads6m{padding-right:6px !important;padding-left:6px !important}
+.w30{width:30% !important}
+.stock-bubble-header{font-size:14px !important}
+.stock-bubble-subtext{font-size:14px !important}
+.markets-table-text{font-size:15px !important}
+.markets-ticker-cell{width:28% !important}
+.markets-value-cell{width:32% !important}
+.markets-bubble-cell{width:28% !important}
+.markets-bubble{width:85% !important}
+.markets-arrow{width:30% !important}
+.survey-title{padding-bottom:0px !important}
+a.survey-option{font-size:12px !important;margin-bottom:10px}
+}
+@media screen and (max-width:370px) {
+.pad5m{padding:5px !important}
+.pcard370{padding:6px !important}
+.pcard370 h3{padding:8px !important}
+.stock-bubble-header{font-size:12px !important}
+.stock-bubble-subtext{font-size:12px !important}
+.markets-table-text{font-size:15px !important}
+.markets-bubble{width:95% !important}
+.markets-arrow{width:35% !important}
+}
+@media only screen and (max-width: 600px) {
+body{margin-right:1px !important;margin-left:1px !important}
+.clear{display:block !important;width:100% !important;text-align:center !im=
+portant}
+.clear p{margin-bottom:2px !important;margin-top:0px !important}
+.clear img{width:160px !important}
+.c6{margin-right:2px !important;margin-left:2px !important}
+.ticker{width:40% !important;text-align:center !important}
+.symbol{display:block !important;margin:0 auto !important;text-align:center=
+ !important}
+.mso-symbol{display:inline-block !important;margin:0 auto !important;text-a=
+lign:center !important}
+}
+@media screen and (max-width: 370px) {
+.pad5m{padding:5px !important}
+.pcard370{padding:6px !important}
+.pcard370 h3{padding:8px !important}
+}</style></head>
+<body style=3D"margin:0px">
+<table style=3D"border-collapse:collapse;table-layout:fixed;margin:0 auto;d=
+isplay:none;">
+<tr>
+<td>
+Texas power grid put to the test...
+</td>
+</tr>
+</table>
+<div class=3D"core_hidden oslo_hidden" style=3D"display: none !important">
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cDovL3d3=
+dy5tb3JuaW5nYnJldy5jb20/5cb51495fc942d6faa0ad4aeB5789ca2e/email"><img src=
+=3D"https://link.morningbrew.com/img/5cb51495fc942d6faa0ad4aegvhe2.13uob/05=
+fc6083.gif" alt=3D"" border=3D"0" /></a>
+</div>
+<table width=3D"100%" bgcolor=3D"#ffffff" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" style=3D"border-collapse: collapse;">
+<tr>
+<td>
+<!--[if (gte mso 9)|(IE)]>
+<table width=3D"670" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" s=
+tyle=3D"border: 0; width: 670px;" role=3D"Presentation">
+<tr>
+<td>
+<![endif]-->
+<div style=3D"display: block; max-width: 670px; margin: 0 auto;">
+<!-- HEADER -->
+<!--[if !mso ]> <!- -->
+<div class=3D"c6" style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card pcard" style=3D"text-align:left;font-weight:400;padding:1=
+5px;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#333;disp=
+lay:block;background-color:#fff;border-radius:15px;border:1px solid #e6e6e6=
+;border-collapse:collapse;box-shadow:none;margin-bottom:0px">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"font-family: Arial, Helvetica, sans-serif; font-size: 12px;col=
+or:#000000; ">
+July 12, 2022
+</td>
+<td align=3D"right" style=3D"font-family: Arial, Helvetica, sans-serif; fon=
+t-size: 12px; text-align: right; " class=3D"core_hidden">
+<a style=3D"color: #000000; text-decoration: none;" target=3D"_blank" rel=
+=3D"noopener" href=3D"https://link.morningbrew.com/click/28342730.1859339/a=
+HR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L2lzc3Vlcy9vbi10aGUtYnJpbms_dXRt=
+X3NvdXJjZT1oZWFkZXJfc2lnbnVwJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fY2FtcGFpZ24=
+9bWImbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad=
+4aeBccf5019c/email">View Online</a>
+|
+<a style=3D"color: #000000; text-decoration: none;" target=3D"_blank" rel=
+=3D"noopener" href=3D"https://link.morningbrew.com/click/28342730.1859339/a=
+HR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5P3V0bV9zb3VyY2U9aGVhZGVyX3NpZ251=
+cCZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX2NhbXBhaWduPW1iJmtpZD03ZmU3NTYmbWlkPTV=
+mN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeBf1cd93c8=
+/email">Sign Up</a>
+|
+<a style=3D"color: #000000; text-decoration: none;" target=3D"_blank" rel=
+=3D"noopener" href=3D"https://link.morningbrew.com/click/28342730.1859339/a=
+HR0cHM6Ly9zaG9wLm1vcm5pbmdicmV3LmNvbS8_dXRtX3NvdXJjZT1jcm9zc3Byb21vJnV0bV9t=
+ZWRpdW09bmV3c2xldHRlciZ1dG1fY2FtcGFpZ249bWJfaGVhZGVyJm1pZD01ZjdiNjA5ZjBkMTh=
+hZDVjNGJiNjhkNzU1ZDI4NmEyYg/5cb51495fc942d6faa0ad4aeB9177db64/email">Shop</=
+a>
+</td>
+</tr>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td align=3D"center" style=3D"padding-top:25px">
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px;margin-bottom:=
+ 18px;">
+<a target=3D"_blank" href=3D"https://link.morningbrew.com/click/28342730.18=
+59339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvP3V0bV9zb3VyY=
+2U9aGVhZGVyX3NpZ251cCZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX2NhbXBhaWduPW1iJm1p=
+ZD01ZjdiNjA5ZjBkMThhZDVjNGJiNjhkNzU1ZDI4NmEyYg/5cb51495fc942d6faa0ad4aeB702=
+e0d60/email" class=3D"">
+<img style=3D"display: block; width: 100%; max-width: 450px; margin: 0 auto=
+;" width=3D"450" alt=3D"Morning Brew" src=3D"https://media.sailthru.com/5z8=
+/1k4/4/2/5e86546217fa0.jpg">
+</a></p>
+</td>
+</tr>
+</table>
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"border-collapse:collapse; table-layout: fixed; margin: 0 auto;">
+<tr>
+<th align=3D"right" class=3D"clear sponsor" style=3D"text-align:left;font-w=
+eight:400;font-family:Helvetica, Arial, sans-serif;font-size:13px;color:#49=
+4949;padding-right:8px;" valign=3D"middle">
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px;font-weight:bo=
+ld; color:#000; margin-top:15px; margin-bottom:15px; line-height:22px">
+TOGETHER WITH
+</p>
+</th>
+<th class=3D"clear" style=3D"text-align:left;font-weight:400">
+<a style=3D"border-bottom:none!important;" target=3D"_blank" href=3D"https:=
+//link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuY3Jvd2RzdHJlZ=
+XQuY29tL2pvaW4vbm93Lz91dG1fc291cmNlPXB1Ymxpc2hlci1tb3JuaW5nYnJldyZ1dG1fbWVk=
+aXVtPW5ldyUyMHNsZXR0ZXImdXRtX2NvbnRlbnQ9bWFya2V0LXZvbGF0aWxpdHkmdXRtX2NhbXB=
+haWduPW1hcmtldHBsYWNl/5cb51495fc942d6faa0ad4aeB3b5d0a62/email" class=3D"">
+<img alt=3D"Crowdstreet" style=3D"width:100%;max-width: 191px; display: inl=
+ine; vertical-align: middle;" width=3D"191" src=3D"https://media2.morningbr=
+ew.com/uploads/company/logo/934/1650300825-220120_RGB_CS_Logos_v1__1__CS_Pr=
+imary_Logo_3-Color.png">
+</a>
+</th>
+</tr>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding-top:20px">
+<div>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">Good morning.</strong> Theme Park Week rolls on with a brie=
+f history of the best theme park innovation in the last three decades: Dipp=
+in=E2=80=99 Dots. We don't remember if they tasted good, but we remember th=
+ey made us <em>feel</em> like sorcerers. Read about what the brand is up to=
+ below.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">=E2=80=94<em>=
+Neal Freyman, Matty Merritt, Max Knoblauch, Joe Abrams</em></p>
+</div>
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso ]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END HEADER -->
+<!-- MARKETS -->
+<!--[if !mso ]><! -- -->
+<div class=3D"c7">
+<div class=3D"c6" style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse:collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse:collapse;">
+<tr>
+<td class=3D"pcard pcard370" style=3D"padding:15px">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+MARKETS
+</h3>
+</td>
+</tr>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse:collapse;">
+<tr>
+<td class=3D"pad5m">
+</td>
+</tr>
+<!-- Nasdaq -->
+<tr>
+<td class=3D"pads10 pads6m lastline" style=3D"border-bottom:1px solid #e6e6=
+e6;padding-bottom:0;text-align: center; border-top: 1px solid #e6e6e6; mso-=
+padding-alt: 0 20px 0 20px;">
+<table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"border-collapse:collapse;">
+<tr>
+<td class=3D"markets-arrow-cell" align=3D"center" valign=3D"middle" style=
+=3D"width:12%;text-align: center; line-height: 1em;">
+<img class=3D"markets-arrow" width=3D"20" src=3D"https://media.sailthru.com=
+/5z8/1k5/4/m/6081a6aedba0d.png" alt=3D"" style=3D"width:22%">
+</td>
+<td class=3D"markets-ticker-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px; white-space: no=
+wrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-ali=
+gn: left;">Nasdaq</p>
+</td>
+<td class=3D"markets-value-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: left;">11,372.60</p>
+</td>
+<td class=3D"markets-bubble-cell" valign=3D"middle" style=3D"width:20%;padd=
+ing-top: 8px; padding-bottom: 8px;">
+<table class=3D"markets-bubble" role=3D"presentation" cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0" style=3D"width:70%;border-collapse:collapse; ma=
+rgin: 0 auto;">
+<tr>
+<td valign=3D"middle" style=3D"padding-left: 8px; padding-right: 8px; paddi=
+ng-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color: #=
+FFB3B3; background-color: rgba(255, 3, 3, 0.3);">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: center;">-2.26%</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END Nasdaq -->
+<!-- S&P -->
+<tr>
+<td class=3D"pads10 pads6m lastline" style=3D"border-bottom:1px solid #e6e6=
+e6;padding-bottom:0;text-align: center; border-top: 1px solid #e6e6e6; mso-=
+padding-alt: 0 20px 0 20px;">
+<table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"border-collapse:collapse;">
+<tr>
+<td class=3D"markets-arrow-cell" align=3D"center" valign=3D"middle" style=
+=3D"width:12%;text-align: center; line-height: 1em;">
+<img class=3D"markets-arrow" width=3D"20" src=3D"https://media.sailthru.com=
+/5z8/1k5/4/m/6081a6aedba0d.png" alt=3D"" style=3D"width:22%">
+</td>
+<td class=3D"markets-ticker-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px; white-space: no=
+wrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-ali=
+gn: left;">S&P</p>
+</td>
+<td class=3D"markets-value-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: left;">3,854.43</p>
+</td>
+<td class=3D"markets-bubble-cell" valign=3D"middle" style=3D"width:20%;padd=
+ing-top: 8px; padding-bottom: 8px;">
+<table class=3D"markets-bubble" role=3D"presentation" cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0" style=3D"width:70%;border-collapse:collapse; ma=
+rgin: 0 auto;">
+<tr>
+<td valign=3D"middle" style=3D"padding-left: 8px; padding-right: 8px; paddi=
+ng-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color: #=
+FFB3B3; background-color: rgba(255, 3, 3, 0.3);">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: center;">-1.15%</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END S&P -->
+<!-- Dow -->
+<tr>
+<td class=3D"pads10 pads6m lastline" style=3D"border-bottom:1px solid #e6e6=
+e6;padding-bottom:0;text-align: center; border-top: 1px solid #e6e6e6; mso-=
+padding-alt: 0 20px 0 20px;">
+<table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"border-collapse:collapse;">
+<tr>
+<td class=3D"markets-arrow-cell" align=3D"center" valign=3D"middle" style=
+=3D"width:12%;text-align: center; line-height: 1em;">
+<img class=3D"markets-arrow" width=3D"20" src=3D"https://media.sailthru.com=
+/5z8/1k5/4/m/6081a6aedba0d.png" alt=3D"" style=3D"width:22%">
+</td>
+<td class=3D"markets-ticker-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px; white-space: no=
+wrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-ali=
+gn: left;">Dow</p>
+</td>
+<td class=3D"markets-value-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: left;">31,173.84</p>
+</td>
+<td class=3D"markets-bubble-cell" valign=3D"middle" style=3D"width:20%;padd=
+ing-top: 8px; padding-bottom: 8px;">
+<table class=3D"markets-bubble" role=3D"presentation" cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0" style=3D"width:70%;border-collapse:collapse; ma=
+rgin: 0 auto;">
+<tr>
+<td valign=3D"middle" style=3D"padding-left: 8px; padding-right: 8px; paddi=
+ng-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color: #=
+FFB3B3; background-color: rgba(255, 3, 3, 0.3);">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: center;">-0.52%</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END Dow -->
+<!-- 10-Year -->
+<tr>
+<td class=3D"pads10 pads6m lastline" style=3D"border-bottom:1px solid #e6e6=
+e6;padding-bottom:0;text-align: center; border-top: 1px solid #e6e6e6; mso-=
+padding-alt: 0 20px 0 20px;">
+<table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"border-collapse:collapse;">
+<tr>
+<td class=3D"markets-arrow-cell" align=3D"center" valign=3D"middle" style=
+=3D"width:12%;text-align: center; line-height: 1em;">
+<img class=3D"markets-arrow" width=3D"20" src=3D"https://media.sailthru.com=
+/5z8/1k5/4/m/6081a6aedba0d.png" alt=3D"" style=3D"width:22%">
+</td>
+<td class=3D"markets-ticker-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px; white-space: no=
+wrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-ali=
+gn: left;">10-Year</p>
+</td>
+<td class=3D"markets-value-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: left;">2.995%</p>
+</td>
+<td class=3D"markets-bubble-cell" valign=3D"middle" style=3D"width:20%;padd=
+ing-top: 8px; padding-bottom: 8px;">
+<table class=3D"markets-bubble" role=3D"presentation" cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0" style=3D"width:70%;border-collapse:collapse; ma=
+rgin: 0 auto;">
+<tr>
+<td valign=3D"middle" style=3D"padding-left: 8px; padding-right: 8px; paddi=
+ng-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color: #=
+FFB3B3; background-color: rgba(255, 3, 3, 0.3);">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: center;">-10.5 bps</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END 10-Year -->
+<!-- Bitcoin -->
+<tr>
+<td class=3D"pads10 pads6m lastline" style=3D"border-bottom:1px solid #e6e6=
+e6;padding-bottom:0;text-align: center; border-top: 1px solid #e6e6e6; mso-=
+padding-alt: 0 20px 0 20px;">
+<table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"border-collapse:collapse;">
+<tr>
+<td class=3D"markets-arrow-cell" align=3D"center" valign=3D"middle" style=
+=3D"width:12%;text-align: center; line-height: 1em;">
+<img class=3D"markets-arrow" width=3D"20" src=3D"https://media.sailthru.com=
+/5z8/1k5/4/m/6081a6aedba0d.png" alt=3D"" style=3D"width:22%">
+</td>
+<td class=3D"markets-ticker-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px; white-space: no=
+wrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-ali=
+gn: left;">Bitcoin</p>
+</td>
+<td class=3D"markets-value-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: left;">$20,372.38</p>
+</td>
+<td class=3D"markets-bubble-cell" valign=3D"middle" style=3D"width:20%;padd=
+ing-top: 8px; padding-bottom: 8px;">
+<table class=3D"markets-bubble" role=3D"presentation" cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0" style=3D"width:70%;border-collapse:collapse; ma=
+rgin: 0 auto;">
+<tr>
+<td valign=3D"middle" style=3D"padding-left: 8px; padding-right: 8px; paddi=
+ng-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color: #=
+FFB3B3; background-color: rgba(255, 3, 3, 0.3);">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: center;">-3.54%</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END Bitcoin -->
+<!-- Twitter -->
+<tr>
+<td class=3D"pads10 pads6m lastline" style=3D"border-bottom:1px solid #e6e6=
+e6;padding-bottom:0;text-align: center; border-top: 1px solid #e6e6e6; mso-=
+padding-alt: 0 20px 0 20px;">
+<table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"border-collapse:collapse;">
+<tr>
+<td class=3D"markets-arrow-cell" align=3D"center" valign=3D"middle" style=
+=3D"width:12%;text-align: center; line-height: 1em;">
+<img class=3D"markets-arrow" width=3D"20" src=3D"https://media.sailthru.com=
+/5z8/1k5/4/m/6081a6aedba0d.png" alt=3D"" style=3D"width:22%">
+</td>
+<td class=3D"markets-ticker-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px; white-space: no=
+wrap; font-weight: bold; vertical-align: middle; line-height: 1em; text-ali=
+gn: left;">Twitter</p>
+</td>
+<td class=3D"markets-value-cell" valign=3D"middle" style=3D"width:34%">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: left;">$32.65</p>
+</td>
+<td class=3D"markets-bubble-cell" valign=3D"middle" style=3D"width:20%;padd=
+ing-top: 8px; padding-bottom: 8px;">
+<table class=3D"markets-bubble" role=3D"presentation" cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0" style=3D"width:70%;border-collapse:collapse; ma=
+rgin: 0 auto;">
+<tr>
+<td valign=3D"middle" style=3D"padding-left: 8px; padding-right: 8px; paddi=
+ng-top: 10px; padding-bottom: 10px; border-radius: 8px; background-color: #=
+FFB3B3; background-color: rgba(255, 3, 3, 0.3);">
+<p class=3D"pad0 mar0 markets-table-text" style=3D"line-height:22px;margin-=
+top:0;margin-bottom:15px;padding:0;margin:0;font-size:16px;white-space: now=
+rap; font-weight: bold; vertical-align: middle; line-height: 1em; text-alig=
+n: center;">-11.30%</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END Twitter -->
+<!-- START REGULAR TEXT -->
+<tr>
+<td style=3D"padding: 3px 15px 10px 15px">
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px;padding: 0; ma=
+rgin: 0; text-align: left; font-size: 13px;">
+*Stock data as of market close, cryptocurrency data as of  8:00pm ET.
+<a target=3D"_blank" class=3D"link-sm" rel=3D"noopener" href=3D"https://lin=
+k.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY2=
+9tL2RhaWx5L3N0b3JpZXMvMjAyMC8xMC8xOS9tYXJrZXRzLTEwMS1yZWFkLXN0b2NrLWluZGV4Z=
+XMtc2VjdXJpdGllcz91dG1fc291cmNlPW9uYm9hcmRpbmcmbWlkPTVmN2I2MDlmMGQxOGFkNWM0=
+YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeBf128a32c/email" style=3D"bord=
+er-bottom:1px solid #1c7ff2;text-decoration:none;color:#333">Here's what th=
+ese numbers mean.</a>
+</p>
+</td>
+</tr>
+<!-- END REGULAR TEXT -->
+<tr>
+<td style=3D"padding: 0px 15px 0px 5px; mso-padding-alt: 0px 15px 15px 5px;=
+">
+<ul style=3D"margin-top:0;padding-left:30px"><li style=3D"line-height:22px;=
+margin-bottom:10px">
+<span><strong style=3D"color:#000">Markets: </strong></span><span>Stocks go=
+t </span><span><a href=3D"https://link.morningbrew.com/click/28342730.18593=
+39/aHR0cHM6Ly93d3cuY25iYy5jb20vMjAyMi8wNy8xMC9zdG9jay1tYXJrZXQtZnV0dXJlcy1v=
+cGVuLXRvLWNsb3NlLW5ld3MuaHRtbA/5cb51495fc942d6faa0ad4aeB0ce08c19/email" cla=
+ss=3D"link" target=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;text=
+-decoration:none;color:#333">bogged down</a></span><span> in emails that pi=
+led up over the weekend and closed lower ahead of the start of earnings sea=
+son later this week. Twitter stock tumbled as it prepares to sue Elon Musk =
+to compel him to buy the company, because whatever ends up happening in tha=
+t Delaware court room, most folks agree that it won=E2=80=99t be good for T=
+witter.</span>
+</li></ul>
+</td>
+</tr>
+<tr>
+<td style=3D"padding: 0px 15px 0px 5px; mso-padding-alt: 0px 15px 15px 5px;=
+">
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso ]><! -- -->
+</div>
+</div>
+<!-- <![endif]-->
+<!-- END MARKETS -->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+ENERGY
+</h3>
+<h1 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:24px;color:=
+#333;font-weight:700;margin-bottom:0;line-height:26px;margin-top:8px">
+<a target=3D"_blank" style=3D"color:#000000!important;text-decoration:none;=
+border-bottom:none!important;" href=3D"https://link.morningbrew.com/click/2=
+8342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvMjA=
+yMi8wNy8xMS90ZXhhcy1ncmlkLW9wZXJhdG9yLWFza3MtcmVzaWRlbnRzLXRvLWNvbnNlcnZlLX=
+Bvd2VyLWR1cmluZy1oZWF0LXdhdmU_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xld=
+HRlciZ1dG1fc291cmNlPW1vcm5pbmdfYnJldyZtaWQ9NWY3YjYwOWYwZDE4YWQ1YzRiYjY4ZDc1=
+NWQyODZhMmI/5cb51495fc942d6faa0ad4aeB7b482a67/email">
+<font color=3D"#000000">
+Texas power grid vs. extreme heat: Who ya got?
+</font>
+</a>
+</h1>
+</td>
+</tr>
+</table>
+<a style=3D"text-decoration:none;border:none;" target=3D"_blank" href=3D"ht=
+tps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ=
+2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvMjAyMi8wNy8xMS90ZXhhcy1ncmlkLW9wZXJhdG9yLWFz=
+a3MtcmVzaWRlbnRzLXRvLWNvbnNlcnZlLXBvd2VyLWR1cmluZy1oZWF0LXdhdmU_dXRtX2NhbXB=
+haWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW1vcm5pbmdfYnJldyZtaW=
+Q9NWY3YjYwOWYwZDE4YWQ1YzRiYjY4ZDc1NWQyODZhMmI/5cb51495fc942d6faa0ad4aeC7b48=
+2a67/email" class=3D"">
+<img alt=3D"Texas flag in front of power lines" style=3D"display: block; wi=
+dth: 100%; max-width: 670px;" width=3D"670" class=3D"story-header-image" sr=
+c=3D"https://cdn.sanity.io/images/bl383u0v/production/d1688838b55697b9e81e6=
+1640d0cf3bcf2c793a7-1024x683.jpg?w=3D670&q=3D70&auto=3Dformat">
+</a><span class=3D"source" style=3D"display:inline-block;padding-left:10px;=
+margin-top:5px;margin-bottom:0px;line-height:14px"><small><em>Brandon Bell/=
+Getty Images</em></small></span>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding:15px">
+<div>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">The Texas pow=
+er grid channeled an NFL defense=E2=80=99s =E2=80=9Cbend but don=E2=80=99t =
+break=E2=80=9D strategy yesterday as record temperatures <a href=3D"https:/=
+/link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cud2FzaGluZ3Rvbn=
+Bvc3QuY29tL2NsaW1hdGUtZW52aXJvbm1lbnQvMjAyMi8wNy8xMS90ZXhhcy1yZWNvcmQtaGVhd=
+C1lcmNvdC1wb3dlci1ncmlkLz91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVy=
+JnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0ad4aeBd2049d4c/email" c=
+lass=3D"link" target=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;te=
+xt-decoration:none;color:#333">tested</a> the state=E2=80=99s banged-up ele=
+ctrical infrastructure.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">Sunday was Te=
+xas=E2=80=99s second-hottest day since at least 1950 and the state=E2=80=99=
+s primary grid operator, the Electric Reliability Council of Texas (ERCOT),=
+ urged residents to conserve energy between 2pm and 8pm Monday to keep dema=
+nd from outstripping available power supply and avoid blackouts.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">By conserving=
+ energy, it meant holding off on running large household appliances, such a=
+s dishwashers and washing machines, and cranking up the thermostat to 78 de=
+grees minimum=E2=80=94steamy, but basically an ice bath compared to the rec=
+ord 110-degree temp Austin faced on Sunday.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">ERCOT is taki=
+ng these dramatic steps because it=E2=80=99s got very little wiggle room. B=
+etween 2pm and 3pm yesterday, the grid could generate an estimated 80,168 m=
+egawatts (MW), while demand was expected to hit 79,671 MW. That=E2=80=99d b=
+e a record for July, topping the previous high-water mark for demand set on=
+ Friday with 78,204 MW.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">With temperat=
+ures expected to remain sizzling into today, officials are preparing for th=
+e worst-case scenario. For example, Houston Mayor Sylvester Turner instruct=
+ed the city=E2=80=99s emergency departments to step in should the power gri=
+d fail.</p>
+<h2 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:19px;font-w=
+eight:700;color:#000;margin-top:0;margin-bottom:15px;margin-right:0;margin-=
+left:0">How did it come to this?</h2>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">As mentioned,=
+ Texas is dealing with unprecedented demand thanks to the record heat. And =
+the power supply isn=E2=80=99t at full-strength, either. With hardly a bree=
+ze blowing through the Texas plains, wind generation was less than 10% of i=
+ts capacity on Monday, ERCOT said.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">But the power=
+ issues only add to longstanding concerns Texans have with their electricit=
+y supply, which has found itself on the brink before.</p>
+<ul style=3D"margin-top:0;padding-left:30px">
+<li style=3D"line-height:22px;margin-bottom:10px"><span>In May, residents w=
+ere asked to conserve power during a heat wave in which six power plants we=
+re knocked offline.</span></li>
+<li style=3D"line-height:22px;margin-bottom:10px"><span>And they won=E2=80=
+=99t soon forget the crisis of February 2021, when a winter storm knocked o=
+ut power for millions of people and led to hundreds of deaths. The grid was=
+ mere minutes away from total collapse.</span></li>
+</ul>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">Big picture: </strong>Texas=E2=80=99s electrical woes have =
+become a focal point of the state=E2=80=99s gubernatorial election this fal=
+l. Democratic challenger Beto O=E2=80=99Rourke has repeatedly accused Gov. =
+Greg Abbott of failing to shore up Texas=E2=80=99s power infrastructure so =
+that it functions smoothly.=E2=80=94<em>NF</em></p>
+</div>
+<!-- SOCIAL LINKS -->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding-top: 12px;">
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93=
+d3cuZmFjZWJvb2suY29tL3NoYXJlci5waHA_dT1odHRwczovL3d3dy5tb3JuaW5nYnJldy5jb20=
+vZGFpbHkvc3Rvcmllcy8yMDIyLzA3LzExL3RleGFzLWdyaWQtb3BlcmF0b3ItYXNrcy1yZXNpZG=
+VudHMtdG8tY29uc2VydmUtcG93ZXItZHVyaW5nLWhlYXQtd2F2ZSZ1dG1fc291cmNlPWZhY2Vib=
+29rX3NoYXJl/5cb51495fc942d6faa0ad4aeB7d1c1291/email" target=3D"_blank" rel=
+=3D"noopener" style=3D"text-decoration: none;" class=3D"">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e865734bf6f7.jpg">
+</a><span>=C2=A0=C2=A0</span>
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cDovL3R3=
+aXR0ZXIuY29tL2ludGVudC90d2VldD90ZXh0PVRoZSUyMGdyaWQlMjBoYXMlMjBiZWVuJTIwb24=
+lMjB0aGUlMjBicmluayUyMGJlZm9yZS4mdXJsPWh0dHBzOi8vd3d3Lm1vcm5pbmdicmV3LmNvbS=
+9kYWlseS9zdG9yaWVzLzIwMjIvMDcvMTEvdGV4YXMtZ3JpZC1vcGVyYXRvci1hc2tzLXJlc2lkZ=
+W50cy10by1jb25zZXJ2ZS1wb3dlci1kdXJpbmctaGVhdC13YXZlJnV0bV9zb3VyY2U9dHdpdHRl=
+cl9zaGFyZSZ2aWE9TW9ybmluZ0JyZXc/5cb51495fc942d6faa0ad4aeB01d95bb5/email" ta=
+rget=3D"_blank" rel=3D"noopener" style=3D"text-decoration: none;" class=3D"=
+">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e86574d1eb82.jpg">
+</a><span>=C2=A0=C2=A0</span>
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cDovL3d3=
+dy5saW5rZWRpbi5jb20vc2hhcmVBcnRpY2xlP3VybD1odHRwczovL3d3dy5tb3JuaW5nYnJldy5=
+jb20vZGFpbHkvc3Rvcmllcy8yMDIyLzA3LzExL3RleGFzLWdyaWQtb3BlcmF0b3ItYXNrcy1yZX=
+NpZGVudHMtdG8tY29uc2VydmUtcG93ZXItZHVyaW5nLWhlYXQtd2F2ZSZ1dG1fc291cmNlPWxpb=
+mtlZGluX3NoYXJl/5cb51495fc942d6faa0ad4aeB1c740005/email" target=3D"_blank" =
+rel=3D"noopener" style=3D"text-decoration: none;" class=3D"">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e86576e04837.jpg">
+</a><span>=C2=A0=C2=A0</span>
+<a href=3D"mailto:?subject=3DCheck%20out%20this%20story%20from%20Morning%20=
+Brew%21&amp;body=3DTexas%20power%20grid%20vs.%20extreme%20heat%3A%20Who%20y=
+a%20got%3F%3A%20https%3A%2F%2Fwww.morningbrew.com%2Fdaily%2Fstories%2F2022%=
+2F07%2F11%2Ftexas-grid-operator-asks-residents-to-conserve-power-during-hea=
+t-wave%3Futm_campaign%3Dmb%26utm_medium%3Dnewsletter%26utm_source%3Dmorning=
+_brew%0A%0AWant%20more%20great%20content%3F%20Subscribe%20to%20Daily%20Brew=
+%20%E2%80%94%20Delivering%20the%20latest%20business%20news%20from%20Wall%20=
+St.%20to%20Silicon%20Valley%20daily.%0Ahttps%3A%2F%2Fwww.morningbrew.com%2F=
+daily%2Fr%2F%3Fkid%3D7fe756%26utm_source%3Demail_share%0A" target=3D"_blank=
+" rel=3D"noopener" style=3D"text-decoration: none;" class=3D"">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e8657887c532.jpg">
+</a>
+</td>
+</tr>
+</table>
+<!-- END SOCIAL LINKS --->
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+TOGETHER WITH CROWDSTREET
+</h3>
+<h1 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:24px;color:=
+#333;font-weight:700;margin-bottom:0;line-height:26px;margin-top:8px">
+<a target=3D"_blank" style=3D"color:#000000!important;text-decoration:none;=
+border-bottom:none!important;" href=3D"#">
+<font color=3D"#000000">
+=E2=80=98Hedging=E2=80=99 is the coolest new trend
+</font>
+</a>
+</h1>
+</td>
+</tr>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding-right:15px;padding-bottom:15px;padding-left:15px;paddi=
+ng-top:0px">
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">And no, it ha=
+s nothing to do with viral social media dances. In investing terms, <strong=
+ style=3D"color:#000">a hedge is a type of investment that protects owners =
+against the decreasing value of cash during periods of high inflation</stro=
+ng>=E2=80=94like right now, unfortunately.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">One of the be=
+st types of hedges is <a href=3D"https://link.morningbrew.com/click/2834273=
+0.1859339/aHR0cHM6Ly93d3cuY3Jvd2RzdHJlZXQuY29tL2pvaW4vbm93Lz91dG1fc291cmNlP=
+XB1Ymxpc2hlci1tb3JuaW5nYnJldyZ1dG1fbWVkaXVtPW5ldyUyMHNsZXR0ZXImdXRtX2NvbnRl=
+bnQ9bWFya2V0LXZvbGF0aWxpdHkmdXRtX2NhbXBhaWduPW1hcmtldHBsYWNl/5cb51495fc942d=
+6faa0ad4aeC3b5d0a62/email" target=3D"_blank" class=3D"link" rel=3D"noopener=
+" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333"=
+>commercial real estate</a>. As an alternative asset class with low correla=
+tion to the more intangible parts of the economy like the stock market, it=
+=E2=80=99s a smart add to your portfolio when the markets get wonky.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">=E2=80=9COh, =
+Morning Brew,=E2=80=9D you=E2=80=99re saying, =E2=80=9Cthat=E2=80=99s all w=
+ell and good, but how am I supposed to invest in real estate?=E2=80=9D</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">We got you: <=
+a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d=
+3cuY3Jvd2RzdHJlZXQuY29tL2pvaW4vbm93Lz91dG1fc291cmNlPXB1Ymxpc2hlci1tb3JuaW5n=
+YnJldyZ1dG1fbWVkaXVtPW5ldyUyMHNsZXR0ZXImdXRtX2NvbnRlbnQ9bWFya2V0LXZvbGF0aWx=
+pdHkmdXRtX2NhbXBhaWduPW1hcmtldHBsYWNl/5cb51495fc942d6faa0ad4aeD3b5d0a62/ema=
+il" target=3D"_blank" class=3D"link" rel=3D"noopener" style=3D"border-botto=
+m:2px solid #1c7ff2;text-decoration:none;color:#333">Crowdstreet</a>.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">Crowdstreet h=
+elps individual investors invest in private equity real estate=E2=80=94aka =
+you. So be cool (financially savvy) and hedge. <a href=3D"https://link.morn=
+ingbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuY3Jvd2RzdHJlZXQuY29tL2pv=
+aW4vbm93Lz91dG1fc291cmNlPXB1Ymxpc2hlci1tb3JuaW5nYnJldyZ1dG1fbWVkaXVtPW5ldyU=
+yMHNsZXR0ZXImdXRtX2NvbnRlbnQ9bWFya2V0LXZvbGF0aWxpdHkmdXRtX2NhbXBhaWduPW1hcm=
+tldHBsYWNl/5cb51495fc942d6faa0ad4aeE3b5d0a62/email" target=3D"_blank" class=
+=3D"link" rel=3D"noopener" style=3D"border-bottom:2px solid #1c7ff2;text-de=
+coration:none;color:#333">Start investing with Crowdstreet here</a>.</p>
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+WORLD
+</h3>
+<h1 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:24px;color:=
+#333;font-weight:700;margin-bottom:0;line-height:26px;margin-top:8px">
+<a target=3D"_blank" style=3D"color:#000000!important;text-decoration:none;=
+border-bottom:none!important;" href=3D"#">
+<font color=3D"#000000">
+Tour de headlines
+</font>
+</a>
+</h1>
+</td>
+</tr>
+</table>
+<img alt=3D"Image from the James Webb Space Telescope " style=3D"display: b=
+lock; width: 100%; max-width: 670px;" width=3D"670" class=3D"story-header-i=
+mage" src=3D"https://cdn.sanity.io/images/bl383u0v/production/bec20eb814055=
+27155952546a5257c319c06cd75-985x1005.jpg?w=3D670&q=3D70&auto=3Dformat">
+<span class=3D"source" style=3D"display:inline-block;padding-left:10px;marg=
+in-top:5px;margin-bottom:0px;line-height:14px"><small><em>NASA, ESA, CSA, a=
+nd STScI</em></small></span>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding:15px">
+<div>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><img src=3D"h=
+ttps://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/=
+237/rocket_1f680.png" width=3D"18" style=3D"max-width:18px" alt=3D""> <stro=
+ng style=3D"color:#000">James Webb gets its pictures developed:</strong> Pr=
+esident Biden revealed the <a href=3D"https://link.morningbrew.com/click/28=
+342730.1859339/aHR0cHM6Ly93d3cubmFzYS5nb3Yvd2ViYmZpcnN0aW1hZ2VzP3V0bV9jYW1w=
+YWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXc/5cb=
+51495fc942d6faa0ad4aeBee42634f/email" class=3D"link" target=3D"_blank" styl=
+e=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">first=
+ full-color image</a> taken by NASA=E2=80=99s $10 billion James Webb Space =
+Telescope, which can capture the highest quality and most detailed pictures=
+ of space of any telescope ever built. The telescope snapped the sharpest a=
+nd deepest picture of our universe to date, showing a mess of galaxies that=
+ no human has seen before. It=E2=80=99s a teaser ahead of the release of mo=
+re images this morning, which will show far-out space phenomena as they wou=
+ld have looked up to 13 billion years ago=E2=80=94not long after the Big Ba=
+ng=E2=80=94in stunning resolution.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><img src=3D"h=
+ttps://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/=
+237/pill_1f48a.png" width=3D"18" style=3D"max-width:18px" alt=3D""> <strong=
+ style=3D"color:#000">Birth control right next to the Mucinex.</strong> Fre=
+nch drugmaker HRA Pharma asked the FDA to <a href=3D"https://link.morningbr=
+ew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuY2JzbmV3cy5jb20vbmV3cy9vdmVyL=
+XRoZS1jb3VudGVyLWJpcnRoLWNvbnRyb2wtcGlsbC1ocmEtcGhhcm1hLXNlZWtzLWZkYS1hcHBy=
+b3ZhbC8_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW1=
+vcm5pbmdfYnJldw/5cb51495fc942d6faa0ad4aeB1ce05b58/email" class=3D"link" tar=
+get=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:non=
+e;color:#333">allow</a> its birth control pill to be sold over-the-counter =
+in the US. It=E2=80=99s the first time the US has considered OTC birth cont=
+rol, and comes as states begin to limit access to reproductive health care =
+post Roe-reversal (the timing was coincidental, the company said). If the p=
+ill is approved, the US would join the 100+ other countries that currently =
+offer birth control without a doctor=E2=80=99s note.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><img src=3D"h=
+ttps://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/=
+237/video-game_1f3ae.png" width=3D"18" style=3D"max-width:18px" alt=3D""> <=
+strong style=3D"color:#000">GameStop has a thing for timing: </strong>The r=
+etailer released its long-awaited <a href=3D"https://link.morningbrew.com/c=
+lick/28342730.1859339/aHR0cHM6Ly93d3cuYmxvb21iZXJnLmNvbS9uZXdzL2FydGljbGVzL=
+zIwMjItMDctMTEvZ2FtZXN0b3AtbGF1bmNoZXMtbmZ0LW1hcmtldHBsYWNlLWFzLXNwZWN1bGF0=
+aXZlLWZyZW56eS1jb29scz9zcm5kPXByZW1pdW0/5cb51495fc942d6faa0ad4aeB1b04896d/e=
+mail" class=3D"link" target=3D"_blank" style=3D"border-bottom:2px solid #1c=
+7ff2;text-decoration:none;color:#333">NFT marketplace</a> as part of its pu=
+sh into the digital realm. Just one problem: The NFT space is in worse shap=
+e than Texas=E2=80=99s power grid. In June, monthly sales of the digital it=
+ems came in below $1 billion for the first time in a year, while sales volu=
+me on the world=E2=80=99s largest NFT marketplace, OpenSea, crashed more th=
+an 70% in June from the month prior, according to Bloomberg.</p>
+</div>
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+HISTORY
+</h3>
+<h1 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:24px;color:=
+#333;font-weight:700;margin-bottom:0;line-height:26px;margin-top:8px">
+<a target=3D"_blank" style=3D"color:#000000!important;text-decoration:none;=
+border-bottom:none!important;" href=3D"https://link.morningbrew.com/click/2=
+8342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvZGl=
+zY28tZGVtb2xpdGlvbi1uaWdodC00M3JkLWFubml2ZXJzYXJ5P3V0bV9jYW1wYWlnbj1tYiZ1dG=
+1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXcmbWlkPTVmN2I2MDlmM=
+GQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeB4a88d642/email">
+<font color=3D"#000000">
+This day in history: =E2=80=98Disco Demolition Night=E2=80=99
+</font>
+</a>
+</h1>
+</td>
+</tr>
+</table>
+<a style=3D"text-decoration:none;border:none;" target=3D"_blank" href=3D"ht=
+tps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ=
+2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvZGlzY28tZGVtb2xpdGlvbi1uaWdodC00M3JkLWFubml2=
+ZXJzYXJ5P3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1=
+tb3JuaW5nX2JyZXcmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495f=
+c942d6faa0ad4aeC4a88d642/email" class=3D"">
+<img alt=3D"This day in history: =E2=80=98Disco Demolition Night=E2=80=99" =
+style=3D"display: block; width: 100%; max-width: 670px;" width=3D"670" clas=
+s=3D"story-header-image" src=3D"https://cdn.sanity.io/images/bl383u0v/produ=
+ction/5fcef0e12a54efc5f8bc83303801e002ae3d8768-1024x699.jpg?w=3D670&q=3D70&=
+auto=3Dformat">
+</a><span class=3D"source" style=3D"display:inline-block;padding-left:10px;=
+margin-top:5px;margin-bottom:0px;line-height:14px"><small><em>A crowd storm=
+s the field at Comiskey Park during an anti-disco promotion that went off t=
+he rails on July 12, 1979. Paul Natkin/Getty Images</em></small></span>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding:15px">
+<div>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">On this day i=
+n 1979, nearly 50,000 people packed Comiskey Park on the southwest side of =
+Chicago to watch local DJ and notorious disco hater Steve Dahl blow up a bu=
+nch of disco records in between a White Sox doubleheader. =E2=80=9C<a href=
+=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9lZG0uY29=
+tL2ZlYXR1cmVzL3JlbWVtYmVyaW5nLWRpc2NvLWRlbW9saXRpb24tbmlnaHQtMTk3OT91dG1fY2=
+FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/=
+5cb51495fc942d6faa0ad4aeB09b443f5/email" class=3D"link" target=3D"_blank" s=
+tyle=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">Di=
+sco Demolition Night</a>=E2=80=9D remains one of the seminal events in musi=
+c history, reflecting the homophobic and racist backlash to a music genre w=
+ith roots in gay and racial minority communities.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">What happened: </strong>In an effort to attract more fans t=
+o attend a not-so-spectacular Sox season, the team partnered with Dahl to o=
+ffer 98-cent tickets to anyone who brought a disco record to explode.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">The promotion=
+ turned out to be very successful=E2=80=94too successful. The crowd devolve=
+d into a full-on riot, with thousands of mostly young, white men rushing th=
+e field to destroy records. One eyewitness, a former Comiskey Park usher, <=
+a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d=
+3cudGhlZ3VhcmRpYW4uY29tL211c2ljLzIwMTkvanVsLzE5L2Rpc2NvLWRlbW9saXRpb24tdGhl=
+LW5pZ2h0LXRoZXktdHJpZWQtdG8tY3J1c2gtYmxhY2stbXVzaWM_dXRtX2NhbXBhaWduPW1iJnV=
+0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW1vcm5pbmdfYnJldw/5cb51495fc942d6=
+faa0ad4aeB2b0603f7/email" class=3D"link" target=3D"_blank" style=3D"border-=
+bottom:2px solid #1c7ff2;text-decoration:none;color:#333">told the Guardian=
+</a> in 2019 that he noticed a lot of attendees didn=E2=80=99t even bother =
+to bring disco albums=E2=80=94they just brought =E2=80=9Canything made by a=
+ Black artist.=E2=80=9D</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">Mike Veeck, t=
+he White Sox=E2=80=99s promotion director and son of team owner Bill Veeck,=
+ has pushed back on the idea that the crowd was motivated by racial or anti=
+-gay animus. =E2=80=9CThat angers me,=E2=80=9D he <a href=3D"https://link.m=
+orningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cud2J1ci5vcmcvb25seWFnY=
+W1lLzIwMTkvMDcvMTIvZGlzY28tZGVtb2xpdGlvbi1kYWhsLXZlZWNrLWNoaWNhZ28td2hpdGUt=
+c294P3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3J=
+uaW5nX2JyZXc/5cb51495fc942d6faa0ad4aeBa73d3c87/email" class=3D"link" target=
+=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;c=
+olor:#333">told WBUR</a> in 2019. =E2=80=9CIt had simply to do with choosin=
+g between rock =E2=80=98n=E2=80=99 roll and disco and dance clubs.=E2=80=9D=
+</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">Zoom out:</strong> Disco was a $4 billion-a-year industry a=
+t the end of 1979, but by then it was on the decline. Some say July 12, 197=
+9, was the day disco died.=E2=80=94<em>MM</em></p>
+</div>
+<!-- SOCIAL LINKS -->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding-top: 12px;">
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93=
+d3cuZmFjZWJvb2suY29tL3NoYXJlci5waHA_dT1odHRwczovL3d3dy5tb3JuaW5nYnJldy5jb20=
+vZGFpbHkvc3Rvcmllcy9kaXNjby1kZW1vbGl0aW9uLW5pZ2h0LTQzcmQtYW5uaXZlcnNhcnkmdX=
+RtX3NvdXJjZT1mYWNlYm9va19zaGFyZQ/5cb51495fc942d6faa0ad4aeB18be4301/email" t=
+arget=3D"_blank" rel=3D"noopener" style=3D"text-decoration: none;" class=3D=
+"">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e865734bf6f7.jpg">
+</a><span>=C2=A0=C2=A0</span>
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cDovL3R3=
+aXR0ZXIuY29tL2ludGVudC90d2VldD90ZXh0PTUwLDAwMCUyMHBlb3BsZSUyMHBhY2tlZCUyMEN=
+vbWlza2V5JTIwUGFyayUyMG9uJTIwdGhlJTIwc291dGh3ZXN0JTIwc2lkZSUyMG9mJTIwQ2hpY2=
+FnbyUyMHRvJTIwd2F0Y2glMjBsb2NhbCUyMERKJTIwYW5kJTIwbm90b3Jpb3VzJTIwZGlzY28lM=
+jBoYXRlciUyMFN0ZXZlJTIwRGFobCUyMGJsb3clMjB1cCUyMGElMjBidW5jaCUyMG9mJTIwZGlz=
+Y28lMjByZWNvcmRzJTIwaW4lMjBiZXQmdXJsPWh0dHBzOi8vd3d3Lm1vcm5pbmdicmV3LmNvbS9=
+kYWlseS9zdG9yaWVzL2Rpc2NvLWRlbW9saXRpb24tbmlnaHQtNDNyZC1hbm5pdmVyc2FyeSZ1dG=
+1fc291cmNlPXR3aXR0ZXJfc2hhcmUmdmlhPU1vcm5pbmdCcmV3/5cb51495fc942d6faa0ad4ae=
+B440413d8/email" target=3D"_blank" rel=3D"noopener" style=3D"text-decoratio=
+n: none;" class=3D"">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e86574d1eb82.jpg">
+</a><span>=C2=A0=C2=A0</span>
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cDovL3d3=
+dy5saW5rZWRpbi5jb20vc2hhcmVBcnRpY2xlP3VybD1odHRwczovL3d3dy5tb3JuaW5nYnJldy5=
+jb20vZGFpbHkvc3Rvcmllcy9kaXNjby1kZW1vbGl0aW9uLW5pZ2h0LTQzcmQtYW5uaXZlcnNhcn=
+kmdXRtX3NvdXJjZT1saW5rZWRpbl9zaGFyZQ/5cb51495fc942d6faa0ad4aeBce568d71/emai=
+l" target=3D"_blank" rel=3D"noopener" style=3D"text-decoration: none;" clas=
+s=3D"">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e86576e04837.jpg">
+</a><span>=C2=A0=C2=A0</span>
+<a href=3D"mailto:?subject=3DCheck%20out%20this%20story%20from%20Morning%20=
+Brew%21&amp;body=3DThis%20day%20in%20history%3A%20%E2%80%98Disco%20Demoliti=
+on%20Night%E2%80%99%3A%20https%3A%2F%2Fwww.morningbrew.com%2Fdaily%2Fstorie=
+s%2Fdisco-demolition-night-43rd-anniversary%3Futm_campaign%3Dmb%26utm_mediu=
+m%3Dnewsletter%26utm_source%3Dmorning_brew%0A%0AWant%20more%20great%20conte=
+nt%3F%20Subscribe%20to%20Daily%20Brew%20%E2%80%94%20Delivering%20the%20late=
+st%20business%20news%20from%20Wall%20St.%20to%20Silicon%20Valley%20daily.%0=
+Ahttps%3A%2F%2Fwww.morningbrew.com%2Fdaily%2Fr%2F%3Fkid%3D7fe756%26utm_sour=
+ce%3Demail_share%0A" target=3D"_blank" rel=3D"noopener" style=3D"text-decor=
+ation: none;" class=3D"">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e8657887c532.jpg">
+</a>
+</td>
+</tr>
+</table>
+<!-- END SOCIAL LINKS --->
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+FOOD
+</h3>
+<h1 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:24px;color:=
+#333;font-weight:700;margin-bottom:0;line-height:26px;margin-top:8px">
+<a target=3D"_blank" style=3D"color:#000000!important;text-decoration:none;=
+border-bottom:none!important;" href=3D"https://link.morningbrew.com/click/2=
+8342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvZGl=
+wcGluLWRvdHMtYWNxdWlzaXRpb24tdGhlbWUtcGFyay13ZWVrP3V0bV9jYW1wYWlnbj1tYiZ1dG=
+1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXcmbWlkPTVmN2I2MDlmM=
+GQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeB1c962158/email">
+<font color=3D"#000000">
+Theme Park Week: Dippin=E2=80=99 into the Dots market
+</font>
+</a>
+</h1>
+</td>
+</tr>
+</table>
+<a style=3D"text-decoration:none;border:none;" target=3D"_blank" href=3D"ht=
+tps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ=
+2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvZGlwcGluLWRvdHMtYWNxdWlzaXRpb24tdGhlbWUtcGFy=
+ay13ZWVrP3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1=
+tb3JuaW5nX2JyZXcmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495f=
+c942d6faa0ad4aeC1c962158/email" class=3D"">
+<!--[if mso]>
+<img alt=3D"Dippin' Dots" style=3D"display: block; width: 100%; max-width: =
+670px;" width=3D"670" height=3D503 src=3D"https://images.morningbrew.com/gi=
+f/2022-07-11/image-e410716b585b825844b8a98d6e36069b7d0904c6-480x360-gif/gip=
+hy-10.gif">
+<![endif]-->
+<!--[if !mso]>--><!-- -->
+<img class=3D"story-header-image" alt=3D"Dippin' Dots" style=3D"display: bl=
+ock; width: 100%; max-width: 670px;" width=3D"670" src=3D"https://images.mo=
+rningbrew.com/gif/2022-07-11/image-e410716b585b825844b8a98d6e36069b7d0904c6=
+-480x360-gif/giphy-10.gif">
+<!--<![endif]-->
+</a><span class=3D"source" style=3D"display:inline-block;padding-left:10px;=
+margin-top:5px;margin-bottom:0px;line-height:14px"><small><em>Dippin' Dots =
+via YouTube</em></small></span>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding:15px">
+<div>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">Dippin=E2=80=
+=99 Dots, which once hailed itself as the =E2=80=9Cice cream of the future,=
+=E2=80=9D has been a theme park staple since the 1990s. Nothing had the pow=
+er to thrill, entice, and lead little brothers to full several-hour-long me=
+ltdowns quite like the flash-frozen novelty dessert. While many onetime Dip=
+pin=E2=80=99 Dots stans have lost touch with the treat, it hasn=E2=80=99t s=
+topped hustling. In late June, J&J Snack Foods closed its <a href=3D"https:=
+//link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9maW5hbmNlLnlhaG9vL=
+mNvbS9uZXdzL2otai1zbmFjay1mb29kcy1jb3JwLTEzMTUwMDA2My5odG1sP3V0bV9jYW1wYWln=
+bj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXc/5cb5149=
+5fc942d6faa0ad4aeBc5da5052/email" class=3D"link" target=3D"_blank" style=3D=
+"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">acquisiti=
+on</a> of the company for $222 million.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">It=E2=80=99s =
+easy to imagine the timeline if Dippin=E2=80=99 Dots debuted today: It woul=
+d instantly be the official ice cream of F1, its Twitter would use the voic=
+e of a 23-year-old nihilistic crypto enthusiast, and it would have a market=
+ value surpassing Ford and GM combined within six months. But Dippin=E2=80=
+=99 Dots was invented in 1988 in Paducah, Kentucky, by a microbiologist who=
+ was trying to make cow feed. So, the company=E2=80=99s had a slightly rock=
+ier road:</p>
+<ul style=3D"margin-top:0;padding-left:30px">
+<li style=3D"line-height:22px;margin-bottom:10px"><span>Due to their extrem=
+e freezing temperature (-40 degrees Fahrenheit), Dippin=E2=80=99 Dots can=
+=E2=80=99t be kept at home or in grocery stores, so the company had to focu=
+s on selling the product at more novel locations, like theme parks.</span><=
+/li>
+<li style=3D"line-height:22px;margin-bottom:10px"><span>It succeeded, movin=
+g $47 million of product at its peak in 2006.</span></li>
+<li style=3D"line-height:22px;margin-bottom:10px"><span>Dippin=E2=80=99 Dot=
+s lost a nine-year legal battle with a competitor and filed for bankruptcy =
+in 2011.</span></li>
+<li style=3D"line-height:22px;margin-bottom:10px"><span>A 2019 plant explos=
+ion and the pandemic rocked the company=E2=80=99s sales.</span></li>
+</ul>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">Through it al=
+l, though, Dippin=E2=80=99 Dots lives to melt another day. The ice cream be=
+ads are currently sold in seven countries, and can be purchased (surrounded=
+ by lots of dry ice) for home delivery.=E2=80=94<em>MK</em></p>
+</div>
+<!-- SOCIAL LINKS -->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding-top: 12px;">
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93=
+d3cuZmFjZWJvb2suY29tL3NoYXJlci5waHA_dT1odHRwczovL3d3dy5tb3JuaW5nYnJldy5jb20=
+vZGFpbHkvc3Rvcmllcy9kaXBwaW4tZG90cy1hY3F1aXNpdGlvbi10aGVtZS1wYXJrLXdlZWsmdX=
+RtX3NvdXJjZT1mYWNlYm9va19zaGFyZQ/5cb51495fc942d6faa0ad4aeBd79bb978/email" t=
+arget=3D"_blank" rel=3D"noopener" style=3D"text-decoration: none;" class=3D=
+"">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e865734bf6f7.jpg">
+</a><span>=C2=A0=C2=A0</span>
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cDovL3R3=
+aXR0ZXIuY29tL2ludGVudC90d2VldD90ZXh0PVRoZSUyMGZ1dHVyZSUyMGlzJTIwaGVyZS4mdXJ=
+sPWh0dHBzOi8vd3d3Lm1vcm5pbmdicmV3LmNvbS9kYWlseS9zdG9yaWVzL2RpcHBpbi1kb3RzLW=
+FjcXVpc2l0aW9uLXRoZW1lLXBhcmstd2VlayZ1dG1fc291cmNlPXR3aXR0ZXJfc2hhcmUmdmlhP=
+U1vcm5pbmdCcmV3/5cb51495fc942d6faa0ad4aeB831d2e87/email" target=3D"_blank" =
+rel=3D"noopener" style=3D"text-decoration: none;" class=3D"">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e86574d1eb82.jpg">
+</a><span>=C2=A0=C2=A0</span>
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cDovL3d3=
+dy5saW5rZWRpbi5jb20vc2hhcmVBcnRpY2xlP3VybD1odHRwczovL3d3dy5tb3JuaW5nYnJldy5=
+jb20vZGFpbHkvc3Rvcmllcy9kaXBwaW4tZG90cy1hY3F1aXNpdGlvbi10aGVtZS1wYXJrLXdlZW=
+smdXRtX3NvdXJjZT1saW5rZWRpbl9zaGFyZQ/5cb51495fc942d6faa0ad4aeB06453a43/emai=
+l" target=3D"_blank" rel=3D"noopener" style=3D"text-decoration: none;" clas=
+s=3D"">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e86576e04837.jpg">
+</a><span>=C2=A0=C2=A0</span>
+<a href=3D"mailto:?subject=3DCheck%20out%20this%20story%20from%20Morning%20=
+Brew%21&amp;body=3DTheme%20Park%20Week%3A%20Dippin%E2%80%99%20into%20the%20=
+Dots%20market%3A%20https%3A%2F%2Fwww.morningbrew.com%2Fdaily%2Fstories%2Fdi=
+ppin-dots-acquisition-theme-park-week%3Futm_campaign%3Dmb%26utm_medium%3Dne=
+wsletter%26utm_source%3Dmorning_brew%0A%0AWant%20more%20great%20content%3F%=
+20Subscribe%20to%20Daily%20Brew%20%E2%80%94%20Delivering%20the%20latest%20b=
+usiness%20news%20from%20Wall%20St.%20to%20Silicon%20Valley%20daily.%0Ahttps=
+%3A%2F%2Fwww.morningbrew.com%2Fdaily%2Fr%2F%3Fkid%3D7fe756%26utm_source%3De=
+mail_share%0A" target=3D"_blank" rel=3D"noopener" style=3D"text-decoration:=
+ none;" class=3D"">
+<img alt=3D"" style=3D"display: inline-block; width: 25px" width=3D"25" src=
+=3D"https://media.sailthru.com/5z8/1k4/4/2/5e8657887c532.jpg">
+</a>
+</td>
+</tr>
+</table>
+<!-- END SOCIAL LINKS --->
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+GRAB BAG
+</h3>
+<h1 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:24px;color:=
+#333;font-weight:700;margin-bottom:0;line-height:26px;margin-top:8px">
+<a target=3D"_blank" style=3D"color:#000000!important;text-decoration:none;=
+border-bottom:none!important;" href=3D"#">
+<font color=3D"#000000">
+Key performance indicators
+</font>
+</a>
+</h1>
+</td>
+</tr>
+</table>
+<img alt=3D"Lofi Girl on YouTube" style=3D"display: block; width: 100%; max=
+-width: 670px;" width=3D"670" class=3D"story-header-image" src=3D"https://c=
+dn.sanity.io/images/bl383u0v/production/20ae6bd549c8ac6e98551a3a872d415a47f=
+3ec32-1202x676.jpg?w=3D670&q=3D70&auto=3Dformat">
+<span class=3D"source" style=3D"display:inline-block;padding-left:10px;marg=
+in-top:5px;margin-bottom:0px;line-height:14px"><small><em>Lofi Girl</em></s=
+mall></span>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding:15px">
+<div>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">Stat: </strong>Lofi Girl=E2=80=99s YouTube video =E2=80=9C<=
+a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d=
+3cueW91dHViZS5jb20vd2F0Y2g_dj01cWFwNWFPNGk5QQ/5cb51495fc942d6faa0ad4aeB506d=
+8e6d/email" class=3D"link" target=3D"_blank" style=3D"border-bottom:2px sol=
+id #1c7ff2;text-decoration:none;color:#333">lofi hip hop radio - beats to r=
+elax/study to</a>=E2=80=9D has more than 668 million views. But people seek=
+ing out chill beats have had to look elsewhere, because that video and anot=
+her Lofi Girl vid were mistakenly <a href=3D"https://link.morningbrew.com/c=
+lick/28342730.1859339/aHR0cHM6Ly93d3cudmljZS5jb20vZW4vYXJ0aWNsZS9ha2VnanAve=
+W91dHViZS1hcG9sb2dpemVzLWZvci1yZW1vdmluZy1pY29uaWMtbG9maS1naXJsP3V0bV9jYW1w=
+YWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXc/5cb=
+51495fc942d6faa0ad4aeBb5a5e9ee/email" class=3D"link" target=3D"_blank" styl=
+e=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">remov=
+ed</a> by YouTube on Sunday after being served a copyright takedown notice.=
+ YouTube said later that the takedown claim was abusive and pledged to rein=
+state both videos.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">Quote: </strong>=E2=80=9CNo.=E2=80=9D</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">Costco CEO Cr=
+aig Jelinek told CNBC the company will <a href=3D"https://link.morningbrew.=
+com/click/28342730.1859339/aHR0cHM6Ly93d3cuY25iYy5jb20vMjAyMi8wNy8xMS9jb3N0=
+Y28tY2Vvcy1vbmUtd29yZC1hbnN3ZXItdG8td2hldGhlci1oZS13b3VsZC1yYWlzZS10aGUtcHJ=
+pY2Utb2YtaG90LWRvZ3Mtbm8uaHRtbD91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbG=
+V0dGVyJnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0ad4aeB77452f65/em=
+ail" class=3D"link" target=3D"_blank" style=3D"border-bottom:2px solid #1c7=
+ff2;text-decoration:none;color:#333">not be raising prices</a> on its hot d=
+ogs no matter how many times you ask. But people <em>are</em> asking, becau=
+se Costco has recently raised prices on some other food court items, such a=
+s its chicken bake ($2.99 =E2=86=92 $3.99) and 20-ounce soda ($0.59 =E2=86=
+=92 $0.69). Costco=E2=80=99s hot dog and soda combo has cost $1.50 since it=
+s introduction in the mid-1980s.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">Read:</strong> On BS in investing. (<a href=3D"https://link=
+.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9ub2FocGluaW9uLnN1YnN0YWN=
+rLmNvbS9wL29uLWJ1bGxzaGl0LWluLWludmVzdGluZz91dG1fY2FtcGFpZ249bWImdXRtX21lZG=
+l1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0ad4ae=
+B70cd04d8/email" class=3D"link" target=3D"_blank" style=3D"border-bottom:2p=
+x solid #1c7ff2;text-decoration:none;color:#333">Noahpinion</a>)</p>
+</div>
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+TOGETHER WITH HOKA
+</h3>
+</td>
+</tr>
+</table>
+<a style=3D"text-decoration:none;border:none;" target=3D"_blank" href=3D"ht=
+tps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuaG9rYS5jb=
+20vZW4vdXMvP3V0bV9zb3VyY2U9bW9ybmluZ2JyZXcmdXRtX21lZGl1bT1yZnImdXRtX2NhbXBh=
+aWduPTIwMjJNb3JuaW5nQnJldyZ1dG1fY29udGVudD1QYWlkRGlyZWN0UHVi/5cb51495fc942d=
+6faa0ad4aeBbfdf609c/email" class=3D"">
+<img alt=3D"HOKA" style=3D"display: block; width: 100%; max-width: 670px;" =
+width=3D"670" class=3D"story-header-image" src=3D"https://media2.morningbre=
+w.com/uploads/placement/images/6749/1655225458-HOKA_S22_FHF_Launch_Social_F=
+acebook_1200x630_W.png">
+</a>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding:15px">
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">Hit the ground </strong><span style=3D"text-decoration: lin=
+e-through;"><strong style=3D"color:#000">running</strong></span><strong sty=
+le=3D"color:#000"> flying.</strong> Where can movement take you? The possib=
+ilities are limitless. HOKA harnesses the power of movement to build lightw=
+eight, high-cushioned footwear that makes more things possible=E2=80=94like=
+ getting to the starting line of a wonderful, new, joy-filled adventure. <a=
+ href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3=
+cuaG9rYS5jb20vZW4vdXMvP3V0bV9zb3VyY2U9bW9ybmluZ2JyZXcmdXRtX21lZGl1bT1yZnImd=
+XRtX2NhbXBhaWduPTIwMjJNb3JuaW5nQnJldyZ1dG1fY29udGVudD1QYWlkRGlyZWN0UHVi/5cb=
+51495fc942d6faa0ad4aeCbfdf609c/email" target=3D"_blank" class=3D"link" rel=
+=3D"noopener" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none=
+;color:#333">Find the shoes that=E2=80=99ll get you flying</a>.=C2=A0</p>
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+WHAT ELSE IS BREWING
+</h3>
+</td>
+</tr>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding-right:15px;padding-bottom:15px;padding-left:15px;paddi=
+ng-top:0px">
+<ul style=3D"margin-top:0;padding-left:30px">
+<li style=3D"line-height:22px;margin-bottom:10px">
+<span><a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cH=
+M6Ly93d3cuY25iYy5jb20vMjAyMi8wNy8xMS9nYXAtY2VvLXNvbmlhLXN5bmdhbC1pcy1zdGVwc=
+GluZy1kb3duLWVmZmVjdGl2ZS1pbW1lZGlhdGVseS5odG1sP3V0bV9jYW1wYWlnbj1tYiZ1dG1f=
+bWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXc/5cb51495fc942d6faa0=
+ad4aeB9da2561b/email" class=3D"link" target=3D"_blank" style=3D"border-bott=
+om:2px solid #1c7ff2;text-decoration:none;color:#333">Gap CEO Sonia Syngal<=
+/a></span><span> is stepping down from her position atop the struggling ret=
+ailer.</span>
+</li>
+<li style=3D"line-height:22px;margin-bottom:10px">
+<span><a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cH=
+M6Ly93d3cuYmJjLmNvbS9uZXdzL3NjaWVuY2UtZW52aXJvbm1lbnQtNjIxMjY0MTM_dXRtX2Nhb=
+XBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW1vcm5pbmdfYnJldw/5=
+cb51495fc942d6faa0ad4aeB78a815eb/email" class=3D"link" target=3D"_blank" st=
+yle=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">Ind=
+ia</a></span><span> will overtake China as the world=E2=80=99s most populou=
+s country next year, according to the UN.</span>
+</li>
+<li style=3D"line-height:22px;margin-bottom:10px">
+<span><a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cH=
+M6Ly93d3cuYmJjLmNvbS9uZXdzL3dvcmxkLWFzaWEtaW5kaWEtNjIxMjM5NjY_dXRtX2NhbXBha=
+WduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW1vcm5pbmdfYnJldw/5cb51=
+495fc942d6faa0ad4aeB41471d37/email" class=3D"link" target=3D"_blank" style=
+=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">Speaki=
+ng of India</a></span><span>: Police arrested a group of Indian con men who=
+ staged a fake Indian Premier League cricket match on a farm and duped Russ=
+ian gamblers into betting on it.</span>
+</li>
+<li style=3D"line-height:22px;margin-bottom:10px">
+<span><a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cH=
+M6Ly93d3cuYmxvb21iZXJnLmNvbS9uZXdzL2FydGljbGVzLzIwMjItMDctMTEvaG9tZS1zYWxlL=
+WNhbmNlbGxhdGlvbnMtanVtcGVkLWluLWp1bmUtYXMtYnV5ZXJzLWJhY2tlZC1hd2F5P3NybmQ9=
+cHJlbWl1bQ/5cb51495fc942d6faa0ad4aeBa1b62343/email" class=3D"link" target=
+=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;c=
+olor:#333">A larger share</a></span><span> of US home sales fell through la=
+st month than at any point since April 2020, according to Redfin.</span>
+</li>
+<li style=3D"line-height:22px;margin-bottom:10px">
+<span><a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cH=
+M6Ly93d3cucmV1dGVycy5jb20vYnVzaW5lc3MvcmV0YWlsLWNvbnN1bWVyL25vLWZyaWVzLXRpb=
+GwtYXV0dW1uLXNvbWUtbWNkb25hbGRzLXJ1c3NpYW4tc3VjY2Vzc29yLXJlc3RhdXJhbnRzLTIw=
+MjItMDctMTEvP3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJ=
+jZT1tb3JuaW5nX2JyZXc/5cb51495fc942d6faa0ad4aeB0441ec71/email" class=3D"link=
+" target=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;text-decoratio=
+n:none;color:#333">The successor</a></span><span> to McDonald=E2=80=99s in =
+Russia has a major problem: a shortage of french fries.</span>
+</li>
+<li style=3D"line-height:22px;margin-bottom:10px">
+<span><em><a href=3D"https://link.morningbrew.com/click/28342730.1859339/aH=
+R0cHM6Ly93d3cubmJjbmV3cy5jb20vbmV3cy91cy1uZXdzL3JlYWwtaG91c2V3aXZlcy1zYWx0L=
+Wxha2UtY2l0eS1zdGFyLWplbi1zaGFoLXBsZWFkcy1ndWlsdHktd2lyZS1mcmF1ZC1yY25hMzc2=
+MzE_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPW1vcm5=
+pbmdfYnJldw/5cb51495fc942d6faa0ad4aeB8154f5d2/email" class=3D"link" target=
+=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;c=
+olor:#333">Real Housewives of Salt Lake City</a> </em></span><span>star Jen=
+ Shah pleaded guilty to running a fraudulent telemarketing scheme.</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+BREW'S BETS
+</h3>
+</td>
+</tr>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding-right:15px;padding-bottom:15px;padding-left:15px;paddi=
+ng-top:0px">
+<div>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">This should keep you occupied: </strong>An interactive <a h=
+ref=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9oaXN0=
+b2dyYXBoeS5pby8_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc29=
+1cmNlPW1vcm5pbmdfYnJldw/5cb51495fc942d6faa0ad4aeB2372f57b/email" class=3D"l=
+ink" target=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;text-decora=
+tion:none;color:#333">history of the world</a>, as told through Wikipedia a=
+rticles.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">Avalanche POV: </strong>Here=E2=80=99s what it looks like t=
+o be staring down an <a href=3D"https://link.morningbrew.com/click/28342730=
+.1859339/aHR0cHM6Ly90d2l0dGVyLmNvbS94cnVpenRydS9zdGF0dXMvMTU0NjIxOTY2MjY5Mz=
+gzMDY2NT9zPTIwJnQ9X0hNblZjYi0yT0RvUGlaTmtpTTE0QQ/5cb51495fc942d6faa0ad4aeBf=
+c228141/email" class=3D"link" target=3D"_blank" style=3D"border-bottom:2px =
+solid #1c7ff2;text-decoration:none;color:#333">avalanche</a> in Kyrgyzstan =
+as it hurtles toward you. (The tourist who took this video, and others with=
+ him, survived.)</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">Some people have a lot of time on their hands: </strong>And=
+ they make masterpieces <a href=3D"https://link.morningbrew.com/click/28342=
+730.1859339/aHR0cHM6Ly90d2l0dGVyLmNvbS9waGFuMjE4Ny9zdGF0dXMvMTU0NjMyMTUwMTI=
+0MjIzMjgzND9zPTIwJnQ9UDlualRhRi1BdnEzU1BIZk5tbFVPZw/5cb51495fc942d6faa0ad4a=
+eB00dae6ae/email" class=3D"link" target=3D"_blank" style=3D"border-bottom:2=
+px solid #1c7ff2;text-decoration:none;color:#333">like this</a>.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">Join the experiment: </strong>Malcolm Gladwell isn=E2=80=99=
+t worried about being wrong=E2=80=94at least, not on this season of<em> Rev=
+isionist History</em>, his podcast about things misunderstood and overlooke=
+d. Why? Because the list of things we don=E2=80=99t know is way longer than=
+ the things we do. <a href=3D"https://link.morningbrew.com/click/28342730.1=
+859339/aHR0cHM6Ly9wb2RjYXN0cy5wdXNoa2luLmZtL3JoNz9zaWQ9bW9ybmluZ2JyZXc/5cb5=
+1495fc942d6faa0ad4aeBecfdf769/email" class=3D"link" target=3D"_blank" style=
+=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">Listen=
+ now</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+GAMES
+</h3>
+<h1 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:24px;color:=
+#333;font-weight:700;margin-bottom:0;line-height:26px;margin-top:8px">
+<a target=3D"_blank" style=3D"color:#000000!important;text-decoration:none;=
+border-bottom:none!important;" href=3D"#">
+<font color=3D"#000000">
+The puzzle section
+</font>
+</a>
+</h1>
+</td>
+</tr>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding-right:15px;padding-bottom:15px;padding-left:15px;paddi=
+ng-top:0px">
+<div>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">Brew Mini: </strong>Refresh your memory of <em>The Queen=E2=
+=80=99s Gambit</em>, the Roswell UFO sighting, and songs that ____ in today=
+=E2=80=99s Mini crossword. <a href=3D"https://link.morningbrew.com/click/28=
+342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3N0b3JpZXMvMjAy=
+Mi8wNy8xMS9icmV3LW1pbmktZ2FtYml0P3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3N=
+sZXR0ZXImdXRtX3NvdXJjZT1tb3JuaW5nX2JyZXcmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OG=
+Q3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeB5c7f5128/email" class=3D"link" targ=
+et=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none=
+;color:#333">Play it here</a>.</p>
+<h2 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:19px;font-w=
+eight:700;color:#000;margin-top:0;margin-bottom:15px;margin-right:0;margin-=
+left:0">Stadium trivia</h2>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">After 21 year=
+s as Heinz Field, the Pittsburgh Steelers=E2=80=99 stadium is getting a new=
+ name: Acrisure Stadium, named after the Michigan-based insurance company t=
+hat acquired the naming rights.</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">Here=E2=80=99=
+s a quiz: There are only three NFL stadiums that are not named after corpor=
+ate sponsors. Can you identify them?</p>
+</div>
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+</h3>
+<h1 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:24px;color:=
+#333;font-weight:700;margin-bottom:0;line-height:26px;margin-top:8px">
+<a target=3D"_blank" style=3D"color:#000000!important;text-decoration:none;=
+border-bottom:none!important;" href=3D"https://link.morningbrew.com/click/2=
+8342730.1859339/aHR0cHM6Ly9iaXQubHkvM1JwMENPRj91dG1fY2FtcGFpZ249bWImdXRtX21=
+lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0ad=
+4aeB9b31c685/email">
+<font color=3D"#000000">
+Why are so many states legalizing cannabis?
+</font>
+</a>
+</h1>
+</td>
+</tr>
+</table>
+<a style=3D"text-decoration:none;border:none;" target=3D"_blank" href=3D"ht=
+tps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9iaXQubHkvM1JwM=
+ENPRj91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bW9y=
+bmluZ19icmV3/5cb51495fc942d6faa0ad4aeC9b31c685/email" class=3D"">
+<img alt=3D"Why are so many states legalizing cannabis?" style=3D"display: =
+block; width: 100%; max-width: 670px;" width=3D"670" class=3D"story-header-=
+image" src=3D"https://cdn.sanity.io/images/bl383u0v/production/b406bed32d7c=
+b4ce017454621a110231b153da49-1280x720.png?w=3D670&q=3D70&auto=3Dformat">
+</a>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding:15px">
+<div>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">Many states h=
+ave taken steps toward cannabis legalization, but federal law still prohibi=
+ts its sale and consumption. What does this mean for the legal weed economy=
+? <a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly=
+9iaXQubHkvM1JwMENPRj91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0b=
+V9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0ad4aeD9b31c685/email" class=
+=3D"link" target=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;text-d=
+ecoration:none;color:#333">Watch now to learn more</a>. </p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><strong style=
+=3D"color:#000">For more from the Brew:</strong></p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px"><img src=3D"h=
+ttps://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/=
+237/flexed-biceps_1f4aa.png" width=3D"18" style=3D"max-width:18px" alt=3D""=
+> What does it mean to be a =E2=80=9Cmulti-hyphenate=E2=80=9D and make it a=
+ll work? On <em>Business Casual</em>, Nora investigates with entrepreneur H=
+itha Palepu. <a href=3D"https://link.morningbrew.com/click/28342730.1859339=
+/aHR0cHM6Ly9saW5rLmNodGJsLmNvbS9CN1pFMC1EdT91dG1fY2FtcGFpZ249bWImdXRtX21lZG=
+l1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bW9ybmluZ19icmV3/5cb51495fc942d6faa0ad4ae=
+B12d12c43/email" class=3D"link" target=3D"_blank" style=3D"border-bottom:2p=
+x solid #1c7ff2;text-decoration:none;color:#333">Listen</a> or <a href=3D"h=
+ttps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly9iaXQubHkvM3l6=
+Ymtjej91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9bW9=
+ybmluZ19icmV3/5cb51495fc942d6faa0ad4aeB5a734eb8/email" class=3D"link" targe=
+t=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;=
+color:#333">watch here</a>.  </p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">=F0=9F=9B=8D =
+Loyalty is everything. Julie Bornstein turned that motto into millions with=
+ Sephora=E2=80=99s Beauty Insider program. <a href=3D"https://link.morningb=
+rew.com/click/28342730.1859339/aHR0cHM6Ly93d3cucmV0YWlsYnJldy5jb20vZ2MvMy1z=
+dGVwcy10by1idWlsZC1hbi1lZmZlY3RpdmUtbG95YWx0eS1wcm9ncmFtP3V0bV9jYW1wYWlnbj1=
+ydGJfaW5fbWJfMDcwODIyJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPWNyb3NzcH=
+JvbW8lMjAmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6f=
+aa0ad4aeB3ba86cf0/email" class=3D"link" target=3D"_blank" style=3D"border-b=
+ottom:2px solid #1c7ff2;text-decoration:none;color:#333">Here=E2=80=99s how=
+ she did it</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 core_hidden" style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+SHARE THE BREW
+</h3>
+</td>
+</tr>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding-right:15px;padding-bottom:15px;padding-left:15px;paddi=
+ng-top:0px">
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px;margin-bottom:=
+15px;line-height:22px;">
+<a class=3D"link" href=3D"https://link.morningbrew.com/click/28342730.18593=
+39/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3JlZmVyLWEtZnJpZW5kP2FjY2Vz=
+c190b2tlbj1Xa1U5aWVSNUdKcmhrNkdnVndpaTF4OTUmdXRtX3NvdXJjZT1zaGFyZV9zZWN0aW9=
+uJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fY2FtcGFpZ249bWImbWlkPTVmN2I2MDlmMGQxOG=
+FkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeBd0025528/email" target=
+=3D"_blank" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;c=
+olor:#333;border-bottom-width:2px;border-bottom-style:solid;border-bottom-c=
+olor:#1c7ff2;text-decoration:none;color:#252525;">Share Morning Brew</a> wi=
+th your friends, acquire free Brew swag, and then acquire more friends as a=
+ result of your fresh Brew swag.
+</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px;margin-bottom:=
+15px;line-height:22px;">
+We=E2=80=99re saying we=E2=80=99ll give you free stuff and more friends if =
+you share a link. One link.
+</p>
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93=
+d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3JlZmVyLWEtZnJpZW5kP2FjY2Vzc190b2tlbj1Xa1U=
+5aWVSNUdKcmhrNkdnVndpaTF4OTUmdXRtX3NvdXJjZT1zaGFyZV9zZWN0aW9uJnV0bV9tZWRpdW=
+09bmV3c2xldHRlciZ1dG1fY2FtcGFpZ249bWImbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3N=
+TVkMjg2YTJi/5cb51495fc942d6faa0ad4aeCd0025528/email" class=3D"">
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px;margin-bottom:=
+15px;line-height:22px;">
+<img src=3D"https://media.sailthru.com/composer/images/sailthru-prod-5z8/ed=
+itor_images/Updated_Referral_Card_Option1_v3.gif" class=3D"img-responsive" =
+width=3D"640" style=3D"display:block;width:100% !important;max-width: 640px=
+; width: 100%;">
+</p>
+</a>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px;margin-bottom:=
+15px;line-height:22px;"><b>Your referral count:</b> 5</p>
+<a class=3D"stb-btn" href=3D"https://link.morningbrew.com/click/28342730.18=
+59339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3JlZmVyLWEtZnJpZW5kP2FjY=
+2Vzc190b2tlbj1Xa1U5aWVSNUdKcmhrNkdnVndpaTF4OTUmdXRtX3NvdXJjZT1zaGFyZV9zZWN0=
+aW9uJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fY2FtcGFpZ249bWImbWlkPTVmN2I2MDlmMGQ=
+xOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeDd0025528/email" styl=
+e=3D"margin-top:inherit !important;margin-bottom:inherit !important;margin-=
+right:inherit !important;margin-left:inherit !important;width:100%;max-widt=
+h:150px;font-family:Helvetica, Arial, sans-serif;font-size:16px;color:#ffff=
+ff;font-weight:900;text-decoration:none;text-align:center;background-color:=
+#1c7ff2;padding-top:15px;padding-bottom:15px;padding-right:15px;padding-lef=
+t:15px;border-radius:4px;display:block;">Click to Share</a>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px;margin-top:15p=
+x;margin-bottom:15px;line-height:22px;">Or copy & paste your referral link =
+to others:<br><a class=3D"link" href=3D"https://link.morningbrew.com/click/=
+28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5L3IvP2tpZD03Zm=
+U3NTYmbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0a=
+d4aeB54b7c760/email" target=3D"_blank" style=3D"border-bottom:2px solid #1c=
+7ff2;text-decoration:none;color:#333;border-bottom-width:2px;border-bottom-=
+style:solid;border-bottom-color:#1c7ff2;text-decoration:none;color:#252525;=
+">morningbrew.com/daily/r/?kid=3D7fe756</a></p>
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<!-- ARTICLE --->
+<!--[if !mso ]><! -- -->
+<div class=3D"c6 " style=3D"margin-bottom:7px">
+<!-- <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<th class=3D"card" style=3D"text-align:left;font-weight:400;font-family:Hel=
+vetica, Arial, sans-serif;font-size:16px;color:#333;display:block;backgroun=
+d-color:#fff;border-radius:15px;border:1px solid #e6e6e6;border-collapse:co=
+llapse;box-shadow:none;margin-bottom:0px;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding: 15px;">
+<h3 style=3D"font-family:Helvetica, Arial, sans-serif;font-size:16px;color:=
+#1c7ff2;font-weight:700;margin-top:0;margin-bottom:0">
+ANSWER
+</h3>
+</td>
+</tr>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-collapse: collapse;">
+<tr>
+<td style=3D"padding-right:15px;padding-bottom:15px;padding-left:15px;paddi=
+ng-top:0px">
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">Lambeau Field=
+ in Green Bay, Soldier Field in Chicago, and Paul Brown Stadium in Cincinna=
+ti. Something about the upper Midwest and clinging to tradition=E2=80=A6</p=
+>
+</td>
+</tr>
+</table>
+</th>
+</tr>
+</table>
+<!--[if !mso]><! -- -->
+</div>
+<!-- <![endif]-->
+<!-- END ARTICLE --->
+<table bgcolor=3D"#1C7FF2" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ style=3D"border-collapse: collapse" width=3D"100%">
+<tr>
+<td style=3D"text-align: center; padding: 10px 0; font-size: 21px;">
+<a rel=3D"noopener" target=3D"_blank" style=3D"width: 32px; height: 32px; d=
+isplay: inline-block; line-height: 32px; vertical-align: super;" href=3D"ht=
+tps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuZmFjZWJvb=
+2suY29tL01vcm5pbmdCcmV3Lz91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVy=
+JnV0bV9zb3VyY2U9Zm9vdGVy/5cb51495fc942d6faa0ad4aeB42aaa68a/email" class=3D"=
+"><img style=3D"width: 100%; height: 100%; vertical-align: text-top;" width=
+=3D"32" src=3D"https://morningbrew-public-assets.s3.amazonaws.com/facebook.=
+png">
+</a>=C2=A0
+<a rel=3D"noopener" target=3D"_blank" style=3D"width: 32px; height: 32px; d=
+isplay: inline-block; line-height: 32px;  vertical-align: super;" href=3D"h=
+ttps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly90d2l0dGVyLmNv=
+bS9Nb3JuaW5nQnJldz91dG1fY2FtcGFpZ249bWImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9=
+zb3VyY2U9Zm9vdGVy/5cb51495fc942d6faa0ad4aeBc780a8ca/email" class=3D""><img =
+style=3D"width: 100%; height: 100%; vertical-align: text-top;" width=3D"32"=
+ src=3D"https://morningbrew-public-assets.s3.amazonaws.com/twitter.png">
+</a>=C2=A0
+<a rel=3D"noopener" target=3D"_blank" style=3D"width: 32px; height: 32px; d=
+isplay: inline-block; line-height: 32px;  vertical-align: super;" href=3D"h=
+ttps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuaW5zdGFn=
+cmFtLmNvbS9tb3JuaW5nYnJldy8_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHR=
+lciZ1dG1fc291cmNlPWZvb3Rlcg/5cb51495fc942d6faa0ad4aeBef0d949f/email" class=
+=3D""><img style=3D"width: 100%; height: 100%; vertical-align: text-top;" w=
+idth=3D"32" src=3D"https://morningbrew-public-assets.s3.amazonaws.com/insta=
+gram.png">
+</a>=C2=A0
+<a rel=3D"noopener" target=3D"_blank" style=3D"width: 32px; height: 32px; d=
+isplay: inline-block; line-height: 32px;  vertical-align: super;" href=3D"h=
+ttps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubGlua2Vk=
+aW4uY29tL2NvbXBhbnkvOTQ1NTk3OC8_dXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2x=
+ldHRlciZ1dG1fc291cmNlPWZvb3Rlcg/5cb51495fc942d6faa0ad4aeB7a2a6019/email" cl=
+ass=3D""><img style=3D"width: 100%; height: 100%; vertical-align: text-top;=
+" width=3D"32" src=3D"https://morningbrew-public-assets.s3.amazonaws.com/li=
+nkedin.png">
+</a>=C2=A0
+<a rel=3D"noopener" target=3D"_blank" style=3D"width: 32px; height: 32px; d=
+isplay: inline-block; line-height: 32px;  vertical-align: super;" href=3D"h=
+ttps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cudGlrdG9r=
+LmNvbS9AbW9ybmluZ2JyZXcvP3V0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXI=
+mdXRtX3NvdXJjZT1mb290ZXI/5cb51495fc942d6faa0ad4aeBdf0c1609/email" class=3D"=
+"><img style=3D"width: 100%; height: 100%; vertical-align: text-top;" width=
+=3D"32" src=3D"https://morningbrew-public-assets.s3.amazonaws.com/tiktok.pn=
+g">
+</a>=C2=A0
+<a rel=3D"noopener" target=3D"_blank" style=3D"width: 32px; height: 32px; d=
+isplay: inline-block; line-height: 32px;  vertical-align: super;" href=3D"h=
+ttps://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cueW91dHVi=
+ZS5jb20vYy9Nb3JuaW5nQnJld0RhaWx5Lz9zdWJfY29uZmlybWF0aW9uPTEmdXRtX2NhbXBhaWd=
+uPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPWZvb3Rlcg/5cb51495fc942d6=
+faa0ad4aeBfd09566c/email" class=3D""><img style=3D"width: 100%; height: 100=
+%; vertical-align: text-top;" width=3D"32" src=3D"https://morningbrew-publi=
+c-assets.s3.amazonaws.com/youtube.png">
+</a>
+</td>
+</tr>
+</table>
+<!-- FOOTER -->
+<table bgcolor=3D"#E9EBF7" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ style=3D"border-collapse: collapse;" width=3D"100%">
+<tr>
+<td align=3D"left" style=3D"font-family:Arial,Helvetica,sans-serif;font-siz=
+e:15px;text-align:left;border-bottom: 1px solid #c0c3cc;padding: 15px;">
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">
+Written by
+<a href=3D"https://link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly90=
+d2l0dGVyLmNvbS9OZWFsX0ZyZXltYW4vP3V0bV9zb3VyY2U9Zm9vdGVy/5cb51495fc942d6faa=
+0ad4aeBa33cbc6a/email" class=3D"link" target=3D"_blank" rel=3D"noopener" st=
+yle=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">Nea=
+l Freyman</a>, <a href=3D"https://link.morningbrew.com/click/28342730.18593=
+39/aHR0cHM6Ly90d2l0dGVyLmNvbS9NYXhLbm9ibGF1Y2gvP3V0bV9zb3VyY2U9Zm9vdGVy/5cb=
+51495fc942d6faa0ad4aeB1707cb60/email" class=3D"link" target=3D"_blank" rel=
+=3D"noopener" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none=
+;color:#333">Max Knoblauch</a>, <a href=3D"https://link.morningbrew.com/cli=
+ck/28342730.1859339/aHR0cHM6Ly90d2l0dGVyLmNvbS9tYXR0eW5vdG1hZGRpZS8_dXRtX3N=
+vdXJjZT1mb290ZXI/5cb51495fc942d6faa0ad4aeBc926fa0f/email" class=3D"link" ta=
+rget=3D"_blank" rel=3D"noopener" style=3D"border-bottom:2px solid #1c7ff2;t=
+ext-decoration:none;color:#333">Matty Merritt</a>, and <span>Joseph Abrams<=
+/span>
+</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">
+Was this email forwarded to you? Sign up
+<a class=3D"link" href=3D"https://link.morningbrew.com/click/28342730.18593=
+39/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2RhaWx5P2tpZD03ZmU3NTYmdXRtX2NhbXBh=
+aWduPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPWZvb3Rlcl9mb3J3YXJkZWQ=
+/5cb51495fc942d6faa0ad4aeB61dfa46e/email" rel=3D"noopener" target=3D"_blank=
+" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333"=
+>here</a>.
+</p>
+<div class=3D"core_hidden">
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px">
+<strong style=3D"color:#000">WANT MORE BREW?</strong>
+</p>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px;margin-bottom:=
+ 0px;">
+<span style=3D"font-style: italic;">
+Industry news, with a sense of humor =E2=86=92
+</span>
+</p>
+<ul style=3D"margin-top:0;padding-left:30px">
+<li style=3D"line-height:22px;margin-bottom:10px;margin-bottom: 0px;">
+<span><a target=3D"_blank" rel=3D"noopener" class=3D"link" href=3D"https://=
+link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuY2ZvYnJldy5jb20=
+vP2VtYWlsPXZhYXJuYW5AZ21haWwuY29tJnV0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW5ld3=
+NsZXR0ZXImdXRtX3NvdXJjZT1mb290ZXI/5cb51495fc942d6faa0ad4aeBa2e0cd87/email" =
+style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">C=
+FO Brew</a></span><span>: your go-to source for global finance insights
+</span>
+</li>
+<li style=3D"line-height:22px;margin-bottom:10px;margin-bottom: 0px;">
+<span><a target=3D"_blank" rel=3D"noopener" class=3D"link" href=3D"https://=
+link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuZW1lcmdpbmd0ZWN=
+oYnJldy5jb20vP2VtYWlsPXZhYXJuYW5AZ21haWwuY29tJnV0bV9jYW1wYWlnbj1tYiZ1dG1fbW=
+VkaXVtPW5ld3NsZXR0ZXImdXRtX3NvdXJjZT1mb290ZXImbWlkPTVmN2I2MDlmMGQxOGFkNWM0Y=
+mI2OGQ3NTVkMjg2YTJi/5cb51495fc942d6faa0ad4aeBee11ba33/email" style=3D"borde=
+r-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">Emerging Tech B=
+rew</a></span><span>: AI, crypto, space, autonomous vehicles, and more
+</span>
+</li>
+<li style=3D"line-height:22px;margin-bottom:10px;margin-bottom: 0px;">
+<span><a target=3D"_blank" rel=3D"noopener" class=3D"link" href=3D"https://=
+link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubWFya2V0aW5nYnJ=
+ldy5jb20vZnV0dXJlLXNvY2lhbC8_ZW1haWw9dmFhcm5hbkBnbWFpbC5jb20mdXRtX2NhbXBhaW=
+duPW1iJnV0bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fc291cmNlPWZvb3RlciZtaWQ9NWY3YjYwO=
+WYwZDE4YWQ1YzRiYjY4ZDc1NWQyODZhMmI/5cb51495fc942d6faa0ad4aeB17cf0d8e/email"=
+ style=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">=
+Future Social</a></span><span>: the Brew's take on the world of social medi=
+a
+</span>
+</li>
+<li style=3D"line-height:22px;margin-bottom:10px;margin-bottom: 0px;">
+<span><a target=3D"_blank" rel=3D"noopener" class=3D"link" href=3D"https://=
+link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cuaXRicmV3LmNvbS8=
+_ZW1haWw9dmFhcm5hbkBnbWFpbC5jb20mdXRtX2NhbXBhaWduPW1iJnV0bV9tZWRpdW09bmV3c2=
+xldHRlciZ1dG1fc291cmNlPWZvb3RlciZtaWQ9NWY3YjYwOWYwZDE4YWQ1YzRiYjY4ZDc1NWQyO=
+DZhMmI/5cb51495fc942d6faa0ad4aeB0b1126fc/email" style=3D"border-bottom:2px =
+solid #1c7ff2;text-decoration:none;color:#333">IT Brew</a></span><span>: mo=
+ving business forward; innovation analysis for the CTO, CIO & every IT pro =
+in-between
+</span>
+</li>
+<li style=3D"line-height:22px;margin-bottom:10px;margin-bottom: 0px;">
+<span><a target=3D"_blank" rel=3D"noopener" class=3D"link" href=3D"https://=
+link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cucmV0YWlsYnJldy5=
+jb20vP2VtYWlsPXZhYXJuYW5AZ21haWwuY29tJnV0bV9jYW1wYWlnbj1tYiZ1dG1fbWVkaXVtPW=
+5ld3NsZXR0ZXImdXRtX3NvdXJjZT1mb290ZXImbWlkPTVmN2I2MDlmMGQxOGFkNWM0YmI2OGQ3N=
+TVkMjg2YTJi/5cb51495fc942d6faa0ad4aeBfcf02979/email" style=3D"border-bottom=
+:2px solid #1c7ff2;text-decoration:none;color:#333">Retail Brew</a></span><=
+span>: retail trends from DTC to "buy now, pay later"
+</span>
+</li>
+</ul>
+<p style=3D"line-height:22px;margin-top:0;margin-bottom:15px;margin-bottom:=
+ 0px;">
+<span style=3D"font-style: italic;">
+Tips for smarter living =E2=86=92
+</span>
+</p>
+<ul style=3D"margin-top:0;padding-left:30px">
+<li style=3D"line-height:22px;margin-bottom:10px;margin-bottom: 0px;">
+<span><a target=3D"_blank" rel=3D"noopener" class=3D"link" href=3D"https://=
+link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXc=
+uY29tL21vbmV5LXNjb29wLz9lbWFpbD12YWFybmFuQGdtYWlsLmNvbSZ1dG1fY2FtcGFpZ249bW=
+ImdXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9Zm9vdGVyJm1pZD01ZjdiNjA5ZjBkM=
+ThhZDVjNGJiNjhkNzU1ZDI4NmEyYg/5cb51495fc942d6faa0ad4aeB3ec216bf/email" styl=
+e=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">Money=
+ Scoop</a></span><span>: your personal finance upgrade
+</span>
+</li>
+<li style=3D"line-height:22px;margin-bottom:10px;margin-bottom: 0px;">
+<span><a target=3D"_blank" rel=3D"noopener" class=3D"link" href=3D"https://=
+link.morningbrew.com/click/28342730.1859339/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXc=
+uY29tL3NpZGVraWNrLz9lbWFpbD12YWFybmFuQGdtYWlsLmNvbSZ1dG1fY2FtcGFpZ249bWImdX=
+RtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9zb3VyY2U9Zm9vdGVyJm1pZD01ZjdiNjA5ZjBkMThhZ=
+DVjNGJiNjhkNzU1ZDI4NmEyYg/5cb51495fc942d6faa0ad4aeBbba8e012/email" style=3D=
+"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">Sidekick<=
+/a></span><span>: lifestyle recs from every corner of the internet
+</span>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"font-family: Arial, Helvetica, sans-serif; fo=
+nt-size: 12px; color: #79787d; padding: 15px;">
+<a class=3D"link" href=3D"https://link.morningbrew.com/click/28342730.18593=
+39/aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZm9ybXMvZC9lLzFGQUlwUUxTY0M5OVdXU3VqRU53=
+MFY4WFdNNWFHSHVOM1FxMm9DdndqaWhhRlJVWUpKTUdWbVFBL3ZpZXdmb3JtP3V0bV9zb3VyY2U=
+9Zm9vdGVy/5cb51495fc942d6faa0ad4aeB40b42ede/email" target=3D"_blank" style=
+=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">ADVERT=
+ISE</a>
+//
+<a class=3D"link" href=3D"https://link.morningbrew.com/click/28342730.18593=
+39/aHR0cHM6Ly9qb2JzLmxldmVyLmNvL21vcm5pbmdicmV3P3V0bV9zb3VyY2U9Zm9vdGVy/5cb=
+51495fc942d6faa0ad4aeB1d8ce729/email" target=3D"_blank" style=3D"border-bot=
+tom:2px solid #1c7ff2;text-decoration:none;color:#333">CAREERS</a>
+//
+<a class=3D"link" href=3D"https://link.morningbrew.com/click/28342730.18593=
+39/aHR0cHM6Ly9zaG9wLm1vcm5pbmdicmV3LmNvbS8_dXRtX3NvdXJjZT1jcm9zc3Byb21vJnV0=
+bV9tZWRpdW09bmV3c2xldHRlciZ1dG1fY2FtcGFpZ249bWJfZm9vdGVyJm1pZD01ZjdiNjA5ZjB=
+kMThhZDVjNGJiNjhkNzU1ZDI4NmEyYg/5cb51495fc942d6faa0ad4aeBcee04778/email" st=
+yle=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333">SHO=
+P</a>
+//
+<a class=3D"link" href=3D"https://link.morningbrew.com/click/28342730.18593=
+39/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2Fib3V0L2ZhcT91dG1fc291cmNlPWZvb3Rl=
+ciZ1dG1fbWVkaXVtPW5ld3NsZXR0ZXImdXRtX2NhbXBhaWduPW1i/5cb51495fc942d6faa0ad4=
+aeB7cf91dad/email" target=3D"_blank" style=3D"border-bottom:2px solid #1c7f=
+f2;text-decoration:none;color:#333">FAQ</a>
+<br>
+<br>
+Update your email preferences or unsubscribe
+<a class=3D"link" href=3D"https://link.morningbrew.com/click/28342730.18593=
+39/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL2FjY291bnQvV2tVOWllUjVHSnJoazZHZ1Z3=
+aWkxeDk1L2VkaXQ_YmlkPTI4MzQyNzMw/5cb51495fc942d6faa0ad4aeB499a9dd1/email" s=
+tyle=3D"border-bottom:2px solid #1c7ff2;text-decoration:none;color:#333;col=
+or: #1c7ff2" target=3D"_blank">here</a>.
+<br>
+View our privacy policy
+<a class=3D"link" href=3D"https://link.morningbrew.com/click/28342730.18593=
+39/aHR0cHM6Ly93d3cubW9ybmluZ2JyZXcuY29tL3ByaXZhY3k_dXRtX3NvdXJjZT1mb290ZXIm=
+dXRtX21lZGl1bT1uZXdzbGV0dGVyJnV0bV9jYW1wYWlnbj1tYg/5cb51495fc942d6faa0ad4ae=
+B2a634761/email" style=3D"border-bottom:2px solid #1c7ff2;text-decoration:n=
+one;color:#333;color: #1c7ff2" target=3D"_blank">here</a>.
+<br>
+<br>
+Copyright =C2=A9
+2022
+Morning Brew. All rights reserved.
+<br>
+22 W 19th St, 4th Floor, New York, NY 10011
+</td>
+</tr>
+</table>
+<!-- END FOOTER -->
+</div>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+------=_Part_4078852_749597191.1657619555772--
+
